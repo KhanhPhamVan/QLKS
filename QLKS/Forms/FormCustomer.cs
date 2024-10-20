@@ -70,6 +70,12 @@ namespace QLKS.Forms
                 MessageBox.Show(error, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            Customer temp = db.GetTable<Customer>(t => t.Name == txtCustomerName.Text).FirstOrDefault();
+            if (temp != null)
+            {
+                MessageBox.Show("Khách hàng đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             Customer customer = new Customer();
             customer.Name = txtCustomerName.Text;
             customer.DoB=dtpDoB.Value;
@@ -111,9 +117,16 @@ namespace QLKS.Forms
             customer.Country = cboCountry.Text;
             customer.Phone = txtPhoneNumber.Text;
             customer.UniqueNumber = txtCustomerIdShow.Text;
-            customer.Id = db.GetTable<Customer>(t => t.UniqueNumber ==customer.UniqueNumber).First().Id;
+            Customer temp = db.GetTable<Customer>(t => t.Name == customer.Name).FirstOrDefault();
+            if(temp==null)
+            {
+                MessageBox.Show("Vui lòng không sửa tên khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            customer.Id =temp.Id;
             db.UpdateRow(customer);
             dtgvCustomer.DataSource = db.GetTable<Customer>();
+            MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

@@ -32,14 +32,17 @@ namespace QLKS.ViewModels
             this.room = room;
             if(room.Status=="Đã đặt")
             {
-                bookingRoomDetail = db.GetTable<BookingRoomDetail>(t => t.Room == room.Id).First();
-                Id = bookingRoomDetail.BookingRoom;
-                bookingRoom = db.GetTable<BookingRoom>(t => t.Id == Id).First();
-                customer = db.GetTable<Customer>(t => t.Id == bookingRoom.Customer).First();
-                CustomerName = customer.Name;
-                ArrivedDate = bookingRoom.ArrivedDate.ToString("dd/MM/yyyy");
-                ExpectedDate = bookingRoom.ExpectedDate.ToString("dd/MM/yyyy");
-                IdRoom = room.Id;
+                bookingRoomDetail = db.GetTable<BookingRoomDetail>(t => t.Room == room.Id).FirstOrDefault();
+                if (bookingRoomDetail != null)
+                {
+                    Id = bookingRoomDetail.BookingRoom;
+                    bookingRoom = db.GetTable<BookingRoom>(t => t.Id == Id).First();
+                    customer = db.GetTable<Customer>(t => t.Id == bookingRoom.Customer).First();
+                    CustomerName = customer.Name;
+                    ArrivedDate = bookingRoom.ArrivedDate.ToString("dd/MM/yyyy");
+                    ExpectedDate = bookingRoom.ExpectedDate.ToString("dd/MM/yyyy");
+                    IdRoom = room.Id;
+                }
             }
             Number = room.Name;
             Status = room.Status;

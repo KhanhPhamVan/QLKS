@@ -54,8 +54,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.dtgvRoom = new System.Windows.Forms.DataGridView();
-            this.button9 = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,6 +61,8 @@
             this.MaxPeople = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button9 = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -155,6 +155,9 @@
             // cboStatus
             // 
             this.cboStatus.FormattingEnabled = true;
+            this.cboStatus.Items.AddRange(new object[] {
+            "Phòng trống",
+            "Đã đặt"});
             this.cboStatus.Location = new System.Drawing.Point(11, 221);
             this.cboStatus.Name = "cboStatus";
             this.cboStatus.Size = new System.Drawing.Size(188, 33);
@@ -167,6 +170,7 @@
             this.cboTypeId.Name = "cboTypeId";
             this.cboTypeId.Size = new System.Drawing.Size(188, 33);
             this.cboTypeId.TabIndex = 4;
+            this.cboTypeId.SelectedIndexChanged += new System.EventHandler(this.cboTypeId_SelectedIndexChanged);
             // 
             // lblMaxPeople
             // 
@@ -322,6 +326,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "Cập nhật";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // groupBox5
             // 
@@ -355,34 +360,6 @@
             this.dtgvRoom.Size = new System.Drawing.Size(720, 565);
             this.dtgvRoom.TabIndex = 0;
             this.dtgvRoom.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvRoom_CellClick);
-            // 
-            // button9
-            // 
-            this.button9.FlatAppearance.BorderColor = System.Drawing.Color.Green;
-            this.button9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Image = ((System.Drawing.Image)(resources.GetObject("button9.Image")));
-            this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.Location = new System.Drawing.Point(6, 59);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(195, 38);
-            this.button9.TabIndex = 2;
-            this.button9.Text = "Quản lý loại phòng";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.button9);
-            this.groupBox4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.ForeColor = System.Drawing.Color.Green;
-            this.groupBox4.Location = new System.Drawing.Point(273, 531);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(207, 134);
-            this.groupBox4.TabIndex = 6;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Loại phòng";
             // 
             // Id
             // 
@@ -432,6 +409,34 @@
             this.Type.HeaderText = "Tên loại phòng";
             this.Type.MinimumWidth = 6;
             this.Type.Name = "Type";
+            // 
+            // button9
+            // 
+            this.button9.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.button9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.Image = ((System.Drawing.Image)(resources.GetObject("button9.Image")));
+            this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button9.Location = new System.Drawing.Point(6, 59);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(195, 38);
+            this.button9.TabIndex = 2;
+            this.button9.Text = "Quản lý loại phòng";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.button9);
+            this.groupBox4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.ForeColor = System.Drawing.Color.Green;
+            this.groupBox4.Location = new System.Drawing.Point(273, 531);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(207, 134);
+            this.groupBox4.TabIndex = 6;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Loại phòng";
             // 
             // FormRoom
             // 

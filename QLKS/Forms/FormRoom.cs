@@ -56,10 +56,17 @@ namespace QLKS.Forms
             txtMaxPeople.Text=room.MaxPeople.ToString();
             txtPrice.Text = room.Price.ToString();
         }
-
+        IEnumerable<RoomType> types = db.GetTable<RoomType>();
         private void FormRoom_Load(object sender, EventArgs e)
         {
             LoadDataSource();
+            List<string> list = new List<string>();
+            foreach(RoomType type in types)
+            {
+                list.Add(type.Id.ToString());
+            }
+            cboTypeId.DataSource = list;
+            cboTypeId.SelectedIndex = 0;
         }
         void LoadDataSource()
         {
@@ -113,6 +120,34 @@ namespace QLKS.Forms
             room.Status=cboStatus.Text;
             room.RoomType =int.Parse(cboTypeId.Text);
             db.AddRow(room);
+            LoadDataSource();
+        }
+
+        private void cboTypeId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cboTypeId.SelectedIndex >= 0)
+            {
+                RoomType roomType = types.First(t => t.Id == int.Parse(cboTypeId.Text));
+                txtMaxPeople.Text = roomType.MaxPeople.ToString();
+                txtTypeName.Text = roomType.Name;
+                txtPrice.Text = roomType.Price.ToString();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string error = ErrorMessage();
+            if (error != null)
+            {
+                MessageBox.Show(error, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            Room room = new Room();
+            room.Name = txtNumber.Text;
+            room.Status = cboStatus.Text;
+            room.RoomType = int.Parse(cboTypeId.Text);
+            room.Id=db.GetTable<Room>(t=>t.Name==room.Name).First().Id;
+            db.UpdateRow(room);
             LoadDataSource();
         }
     }
