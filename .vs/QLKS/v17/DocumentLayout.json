@@ -1,0 +1,120 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\N\u0103m3\\\u0110\u1ED3 \u00E1n C\u00F4ng ngh\u1EC7 .NET\\Sao l\u01B0u Github\\QLKS\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5F936BB5-C88D-481A-88D5-7AF9932F4BCB}|QLKS\\QLKS.csproj|e:\\n\u0103m3\\\u0111\u1ED3 \u00E1n c\u00F4ng ngh\u1EC7 .net\\sao l\u01B0u github\\qlks\\qlks\\forms\\formroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5F936BB5-C88D-481A-88D5-7AF9932F4BCB}|QLKS\\QLKS.csproj|solutionrelative:qlks\\forms\\formroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F936BB5-C88D-481A-88D5-7AF9932F4BCB}|QLKS\\QLKS.csproj|e:\\n\u0103m3\\\u0111\u1ED3 \u00E1n c\u00F4ng ngh\u1EC7 .net\\sao l\u01B0u github\\qlks\\qlks\\models\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5F936BB5-C88D-481A-88D5-7AF9932F4BCB}|QLKS\\QLKS.csproj|solutionrelative:qlks\\models\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F936BB5-C88D-481A-88D5-7AF9932F4BCB}|QLKS\\QLKS.csproj|e:\\n\u0103m3\\\u0111\u1ED3 \u00E1n c\u00F4ng ngh\u1EC7 .net\\sao l\u01B0u github\\qlks\\qlks\\forms\\formcustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5F936BB5-C88D-481A-88D5-7AF9932F4BCB}|QLKS\\QLKS.csproj|solutionrelative:qlks\\forms\\formcustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F936BB5-C88D-481A-88D5-7AF9932F4BCB}|QLKS\\QLKS.csproj|e:\\n\u0103m3\\\u0111\u1ED3 \u00E1n c\u00F4ng ngh\u1EC7 .net\\sao l\u01B0u github\\qlks\\qlks\\forms\\formroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5F936BB5-C88D-481A-88D5-7AF9932F4BCB}|QLKS\\QLKS.csproj|solutionrelative:qlks\\forms\\formroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F936BB5-C88D-481A-88D5-7AF9932F4BCB}|QLKS\\QLKS.csproj|e:\\n\u0103m3\\\u0111\u1ED3 \u00E1n c\u00F4ng ngh\u1EC7 .net\\sao l\u01B0u github\\qlks\\qlks\\viewmodels\\roomviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5F936BB5-C88D-481A-88D5-7AF9932F4BCB}|QLKS\\QLKS.csproj|solutionrelative:qlks\\viewmodels\\roomviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F936BB5-C88D-481A-88D5-7AF9932F4BCB}|QLKS\\QLKS.csproj|e:\\n\u0103m3\\\u0111\u1ED3 \u00E1n c\u00F4ng ngh\u1EC7 .net\\sao l\u01B0u github\\qlks\\qlks\\forms\\formcustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5F936BB5-C88D-481A-88D5-7AF9932F4BCB}|QLKS\\QLKS.csproj|solutionrelative:qlks\\forms\\formcustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FormCustomer.cs",
+              "DocumentMoniker": "E:\\N\u0103m3\\\u0110\u1ED3 \u00E1n C\u00F4ng ngh\u1EC7 .NET\\Sao l\u01B0u Github\\QLKS\\QLKS\\Forms\\FormCustomer.cs",
+              "RelativeDocumentMoniker": "QLKS\\Forms\\FormCustomer.cs",
+              "ToolTip": "E:\\N\u0103m3\\\u0110\u1ED3 \u00E1n C\u00F4ng ngh\u1EC7 .NET\\Sao l\u01B0u Github\\QLKS\\QLKS\\Forms\\FormCustomer.cs",
+              "RelativeToolTip": "QLKS\\Forms\\FormCustomer.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAgwEcAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-19T18:10:40.534Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FormCustomer.cs [Design]",
+              "DocumentMoniker": "E:\\N\u0103m3\\\u0110\u1ED3 \u00E1n C\u00F4ng ngh\u1EC7 .NET\\Sao l\u01B0u Github\\QLKS\\QLKS\\Forms\\FormCustomer.cs",
+              "RelativeDocumentMoniker": "QLKS\\Forms\\FormCustomer.cs",
+              "ToolTip": "E:\\N\u0103m3\\\u0110\u1ED3 \u00E1n C\u00F4ng ngh\u1EC7 .NET\\Sao l\u01B0u Github\\QLKS\\QLKS\\Forms\\FormCustomer.cs [Design]",
+              "RelativeToolTip": "QLKS\\Forms\\FormCustomer.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-19T18:10:38.312Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Room.cs",
+              "DocumentMoniker": "E:\\N\u0103m3\\\u0110\u1ED3 \u00E1n C\u00F4ng ngh\u1EC7 .NET\\Sao l\u01B0u Github\\QLKS\\QLKS\\Models\\Room.cs",
+              "RelativeDocumentMoniker": "QLKS\\Models\\Room.cs",
+              "ToolTip": "E:\\N\u0103m3\\\u0110\u1ED3 \u00E1n C\u00F4ng ngh\u1EC7 .NET\\Sao l\u01B0u Github\\QLKS\\QLKS\\Models\\Room.cs",
+              "RelativeToolTip": "QLKS\\Models\\Room.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-19T17:37:52.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RoomViewModel.cs",
+              "DocumentMoniker": "E:\\N\u0103m3\\\u0110\u1ED3 \u00E1n C\u00F4ng ngh\u1EC7 .NET\\Sao l\u01B0u Github\\QLKS\\QLKS\\ViewModels\\RoomViewModel.cs",
+              "RelativeDocumentMoniker": "QLKS\\ViewModels\\RoomViewModel.cs",
+              "ToolTip": "E:\\N\u0103m3\\\u0110\u1ED3 \u00E1n C\u00F4ng ngh\u1EC7 .NET\\Sao l\u01B0u Github\\QLKS\\QLKS\\ViewModels\\RoomViewModel.cs",
+              "RelativeToolTip": "QLKS\\ViewModels\\RoomViewModel.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAwBIAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-19T17:37:30.73Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FormRoom.cs",
+              "DocumentMoniker": "E:\\N\u0103m3\\\u0110\u1ED3 \u00E1n C\u00F4ng ngh\u1EC7 .NET\\Sao l\u01B0u Github\\QLKS\\QLKS\\Forms\\FormRoom.cs",
+              "RelativeDocumentMoniker": "QLKS\\Forms\\FormRoom.cs",
+              "ToolTip": "E:\\N\u0103m3\\\u0110\u1ED3 \u00E1n C\u00F4ng ngh\u1EC7 .NET\\Sao l\u01B0u Github\\QLKS\\QLKS\\Forms\\FormRoom.cs",
+              "RelativeToolTip": "QLKS\\Forms\\FormRoom.cs",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAQwHIAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-19T17:37:22.785Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FormRoom.cs [Design]",
+              "DocumentMoniker": "E:\\N\u0103m3\\\u0110\u1ED3 \u00E1n C\u00F4ng ngh\u1EC7 .NET\\Sao l\u01B0u Github\\QLKS\\QLKS\\Forms\\FormRoom.cs",
+              "RelativeDocumentMoniker": "QLKS\\Forms\\FormRoom.cs",
+              "ToolTip": "E:\\N\u0103m3\\\u0110\u1ED3 \u00E1n C\u00F4ng ngh\u1EC7 .NET\\Sao l\u01B0u Github\\QLKS\\QLKS\\Forms\\FormRoom.cs [Design]",
+              "RelativeToolTip": "QLKS\\Forms\\FormRoom.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-19T17:36:35.808Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
