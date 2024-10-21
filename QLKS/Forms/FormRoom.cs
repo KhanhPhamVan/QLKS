@@ -30,7 +30,7 @@ namespace QLKS.Forms
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(lblMaxPeople.Text))
+            if (string.IsNullOrEmpty(txtSearch.Text))
             {
                 MessageBox.Show("Vui lòng nhập vào thông tin để tìm kiếm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -55,6 +55,7 @@ namespace QLKS.Forms
             txtTypeName.Text = room.Type;
             txtMaxPeople.Text=room.MaxPeople.ToString();
             txtPrice.Text = room.Price.ToString();
+            cboRoomId.Text = room.Id.ToString();
         }
         IEnumerable<RoomType> types = db.GetTable<RoomType>();
         private void FormRoom_Load(object sender, EventArgs e)
@@ -66,7 +67,7 @@ namespace QLKS.Forms
                 list.Add(type.Id.ToString());
             }
             cboTypeId.DataSource = list;
-            cboTypeId.SelectedIndex = 0;
+            LoadRoomId();
         }
         void LoadDataSource()
         {
@@ -77,7 +78,13 @@ namespace QLKS.Forms
             }
             dtgvRoom.DataSource = list;
         }
-
+        void LoadRoomId()
+        {
+            foreach (Room room in db.GetTable<Room>())
+            {
+                cboRoomId.Items.Add(room.Id);
+            }
+        }
         private void dtgvRoom_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if(e.RowIndex>=0)
@@ -89,6 +96,7 @@ namespace QLKS.Forms
                 txtTypeName.Text = row.Cells["Type"].Value?.ToString(); ;
                 txtMaxPeople.Text = row.Cells["MaxPeople"].Value?.ToString(); ;
                 txtPrice.Text = row.Cells["Price"].Value?.ToString();
+                cboRoomId.Text= row.Cells["Id"].Value?.ToString();
             }    
         }
         string ErrorMessage()
@@ -115,12 +123,23 @@ namespace QLKS.Forms
                 MessageBox.Show(error, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            if (db.GetTable<Room>(t => t.Name == txtNumber.Text).FirstOrDefault() != null)
+            {
+                MessageBox.Show("Phòng đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             Room room = new Room();
             room.Name=txtNumber.Text;
             room.Status=cboStatus.Text;
             room.RoomType =int.Parse(cboTypeId.Text);
-            db.AddRow(room);
+            if (!db.AddRow(room))
+            {
+                MessageBox.Show("Thêm phòng không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            };
             LoadDataSource();
+            LoadRoomId();
+            MessageBox.Show("Thêm phòng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void cboTypeId_SelectedIndexChanged(object sender, EventArgs e)
@@ -136,19 +155,101 @@ namespace QLKS.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(cboRoomId.Text))
+            {
+                MessageBox.Show("Vui lòng nhập vào mã phòng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             string error = ErrorMessage();
             if (error != null)
             {
                 MessageBox.Show(error, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            
             Room room = new Room();
             room.Name = txtNumber.Text;
             room.Status = cboStatus.Text;
             room.RoomType = int.Parse(cboTypeId.Text);
-            room.Id=db.GetTable<Room>(t=>t.Name==room.Name).First().Id;
-            db.UpdateRow(room);
+            room.Id=int.Parse(cboRoomId.Text);
+            if(!db.UpdateRow(room))
+            {
+                MessageBox.Show("Cập nhật phòng không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }    
             LoadDataSource();
+            MessageBox.Show("Cập nhật phòng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void cboRoomId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RoomViewModel room = new RoomViewModel();
+            foreach (RoomViewModel roomView in RoomViewModel.GetRooms(db))
+            {
+                if(roomView.Id==int.Parse(cboRoomId.Text))
+                {
+                    room=roomView; break;
+                }
+            }
+            txtNumber.Text = room.Number;
+            cboStatus.Text = room.Status;
+            cboTypeId.Text = room.TypeId.ToString();
+            txtTypeName.Text = room.Type;
+            txtMaxPeople.Text = room.MaxPeople.ToString();
+            txtPrice.Text = room.Price.ToString();
+        }
+        void ClearControl(Control control)
+        {
+            foreach (Control control1 in control.Controls)
+            {
+                if (control1 is TextBox)
+                {
+                    TextBox textBox = (TextBox)control1;
+                    textBox.Clear();
+                }
+                else if (control1 is ComboBox)
+                {
+                    ComboBox comboBox = (ComboBox)control1;
+                    comboBox.SelectedIndex = 0;
+                }
+                else if (control1 is DateTimePicker)
+                {
+                    DateTimePicker dateTimePicker = (DateTimePicker)control1;
+                    dateTimePicker.Value = DateTime.Now;
+                }
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(cboRoomId.Text))
+            {
+                MessageBox.Show("Vui lòng nhập vào mã phòng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            string error = ErrorMessage();
+            if (error != null)
+            {
+                MessageBox.Show(error, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (MessageBox.Show("Bạn có chắc muốn xóa phòng này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                return;
+            Func<Room, bool> predicate = p => p.Id == int.Parse(cboRoomId.Text);
+            if(db.DeleteRows(predicate)==0)
+            {
+                MessageBox.Show("Xóa phòng không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }    
+            LoadDataSource();
+            LoadRoomId();
+            MessageBox.Show("Xóa phòng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            ClearControl(groupBox2);
+            ClearControl(groupBox1);
         }
     }
 }

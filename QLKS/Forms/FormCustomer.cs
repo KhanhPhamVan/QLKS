@@ -26,8 +26,16 @@ namespace QLKS.Forms
             cboCountry.DataSource = Helpers.Countries;
             cboGender.DataSource = new List<string> { "Nam", "Nữ" };
             dtgvCustomer.DataSource = db.GetTable<Customer>();
+            LoadCustomerId();
         }
-
+        void LoadCustomerId()
+        {
+            cboCustomerId.DataSource = null;
+            foreach (Customer customer in db.GetTable<Customer>())
+            {
+                cboCustomerId.Items.Add(customer.Id);
+            }
+        }
         private void btnSearch_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtSearch.Text))
@@ -51,6 +59,7 @@ namespace QLKS.Forms
             txtPhoneNumber.Text = customer.Phone.ToString();
             cboGender.Text = customer.Gender.ToString();
             cboCountry.Text = customer.Country.ToString();
+            cboCustomerId.Text=customer.Id.ToString();
         }
         string ErrorMessage()
         {
@@ -83,8 +92,14 @@ namespace QLKS.Forms
             customer.Country=cboCountry.Text;
             customer.Phone=txtPhoneNumber.Text;
             customer.UniqueNumber=txtCustomerIdShow.Text;
-            db.AddRow(customer);
-            dtgvCustomer.DataSource = db.GetTable<Customer>();
+            if(!db.AddRow(customer))
+            {
+                MessageBox.Show("Thêm khách hàng không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            dtgvCustomer.DataSource = db.GetTable<Customer>().ToList();
+            LoadCustomerId();
+            MessageBox.Show("Thêm khách hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void dtgvCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -99,11 +114,17 @@ namespace QLKS.Forms
                 cboCountry.Text = row.Cells["Country"].Value?.ToString();
                 cboGender.Text = row.Cells["Gender"].Value?.ToString();
                 txtCustomerIdShow.Text = row.Cells["UniqueNumber"].Value?.ToString();
+                cboCustomerId.Text= row.Cells["Id"].Value?.ToString();
             }    
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(cboCustomerId.Text))
+            {
+                MessageBox.Show("Vui lòng nhập vào mã khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             string error = ErrorMessage();
             if (error != null)
             {
@@ -117,20 +138,23 @@ namespace QLKS.Forms
             customer.Country = cboCountry.Text;
             customer.Phone = txtPhoneNumber.Text;
             customer.UniqueNumber = txtCustomerIdShow.Text;
-            Customer temp = db.GetTable<Customer>(t => t.Name == customer.Name).FirstOrDefault();
-            if(temp==null)
+            customer.Id =int.Parse(cboCustomerId.Text);
+            if (!db.UpdateRow(customer))
             {
-                MessageBox.Show("Vui lòng không sửa tên khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Cập nhật khách hàng không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            customer.Id =temp.Id;
-            db.UpdateRow(customer);
             dtgvCustomer.DataSource = db.GetTable<Customer>();
             MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(cboCustomerId.Text))
+            {
+                MessageBox.Show("Vui lòng nhập vào mã khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             string error = ErrorMessage();
             if (error != null)
             {
@@ -146,11 +170,16 @@ namespace QLKS.Forms
             customer.Country = cboCountry.Text;
             customer.Phone = txtPhoneNumber.Text;
             customer.UniqueNumber = txtCustomerIdShow.Text;
-            customer.Id = db.GetTable<Customer>(t => t.UniqueNumber == customer.UniqueNumber).First().Id;
+            customer.Id = int.Parse(cboCustomerId.Text);
             Func<Customer, bool> predicate =p=>p.Id == customer.Id;
-            db.DeleteRows(predicate);
+            if (db.DeleteRows(predicate) == 0)
+            {
+                MessageBox.Show("Xóa khách hàng không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             dtgvCustomer.DataSource = db.GetTable<Customer>();
-
+            LoadCustomerId();
+            MessageBox.Show("Xóa khách hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         void ClearControl(Control control)
         {
@@ -176,6 +205,17 @@ namespace QLKS.Forms
         private void btnClose_Click(object sender, EventArgs e)
         {
             ClearControl(grbCustomer);
+        }
+
+        private void cboCustomerId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Customer customer=db.GetTable<Customer>(t=>t.Id==int.Parse(cboCustomerId.Text)).First();
+            txtCustomerName.Text= customer.Name;
+            dtpDoB.Value = customer.DoB;
+            cboGender.Text = customer.Gender;
+            cboCountry.Text = customer.Country;
+            txtPhoneNumber.Text = customer.Phone;
+            txtCustomerIdShow.Text = customer.UniqueNumber;
         }
     }
 }

@@ -48,10 +48,10 @@
             this.txtTypeName = new System.Windows.Forms.TextBox();
             this.txtNumber = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.dtgvRoom = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,6 +63,8 @@
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button9 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cboRoomId = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -131,6 +133,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cboRoomId);
+            this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.cboStatus);
             this.groupBox2.Controls.Add(this.cboTypeId);
             this.groupBox2.Controls.Add(this.lblMaxPeople);
@@ -147,24 +151,26 @@
             this.groupBox2.ForeColor = System.Drawing.Color.Green;
             this.groupBox2.Location = new System.Drawing.Point(17, 213);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(463, 301);
+            this.groupBox2.Size = new System.Drawing.Size(463, 339);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin phòng";
             // 
             // cboStatus
             // 
+            this.cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboStatus.FormattingEnabled = true;
             this.cboStatus.Items.AddRange(new object[] {
             "Phòng trống",
             "Đã đặt"});
-            this.cboStatus.Location = new System.Drawing.Point(11, 221);
+            this.cboStatus.Location = new System.Drawing.Point(26, 298);
             this.cboStatus.Name = "cboStatus";
             this.cboStatus.Size = new System.Drawing.Size(188, 33);
             this.cboStatus.TabIndex = 4;
             // 
             // cboTypeId
             // 
+            this.cboTypeId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTypeId.FormattingEnabled = true;
             this.cboTypeId.Location = new System.Drawing.Point(243, 70);
             this.cboTypeId.Name = "cboTypeId";
@@ -193,7 +199,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 119);
+            this.label5.Location = new System.Drawing.Point(21, 196);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(129, 25);
             this.label5.TabIndex = 3;
@@ -211,7 +217,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 193);
+            this.label7.Location = new System.Drawing.Point(21, 270);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(89, 25);
             this.label7.TabIndex = 3;
@@ -222,13 +228,14 @@
             this.txtMaxPeople.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMaxPeople.Location = new System.Drawing.Point(243, 223);
             this.txtMaxPeople.Name = "txtMaxPeople";
+            this.txtMaxPeople.ReadOnly = true;
             this.txtMaxPeople.Size = new System.Drawing.Size(188, 31);
             this.txtMaxPeople.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 42);
+            this.label3.Location = new System.Drawing.Point(21, 119);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 25);
             this.label3.TabIndex = 3;
@@ -239,65 +246,69 @@
             this.txtPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPrice.Location = new System.Drawing.Point(244, 149);
             this.txtPrice.Name = "txtPrice";
+            this.txtPrice.ReadOnly = true;
             this.txtPrice.Size = new System.Drawing.Size(188, 31);
             this.txtPrice.TabIndex = 1;
             // 
             // txtTypeName
             // 
             this.txtTypeName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTypeName.Location = new System.Drawing.Point(11, 149);
+            this.txtTypeName.Location = new System.Drawing.Point(26, 226);
             this.txtTypeName.Name = "txtTypeName";
+            this.txtTypeName.ReadOnly = true;
             this.txtTypeName.Size = new System.Drawing.Size(188, 31);
             this.txtTypeName.TabIndex = 1;
             // 
             // txtNumber
             // 
             this.txtNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNumber.Location = new System.Drawing.Point(11, 72);
+            this.txtNumber.Location = new System.Drawing.Point(26, 149);
             this.txtNumber.Name = "txtNumber";
             this.txtNumber.Size = new System.Drawing.Size(188, 31);
             this.txtNumber.TabIndex = 1;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button5);
-            this.groupBox3.Controls.Add(this.button4);
+            this.groupBox3.Controls.Add(this.btnCancel);
+            this.groupBox3.Controls.Add(this.btnDelete);
             this.groupBox3.Controls.Add(this.btnAdd);
-            this.groupBox3.Controls.Add(this.button2);
+            this.groupBox3.Controls.Add(this.btnUpdate);
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.Green;
-            this.groupBox3.Location = new System.Drawing.Point(17, 531);
+            this.groupBox3.Location = new System.Drawing.Point(17, 575);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(236, 134);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Chức năng";
             // 
-            // button5
+            // btnCancel
             // 
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.Green;
-            this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(118, 82);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(95, 38);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "Đóng";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Location = new System.Drawing.Point(118, 82);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(95, 38);
+            this.btnCancel.TabIndex = 2;
+            this.btnCancel.Text = "Hủy";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // button4
+            // btnDelete
             // 
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Green;
-            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(6, 82);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(95, 38);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "Xóa";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnDelete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnDelete.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Location = new System.Drawing.Point(6, 82);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(95, 38);
+            this.btnDelete.TabIndex = 2;
+            this.btnDelete.Text = "Xóa";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.button4_Click);
             // 
             // btnAdd
             // 
@@ -313,20 +324,20 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // button2
+            // btnUpdate
             // 
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Green;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(6, 30);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(95, 38);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Cập nhật";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnUpdate.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnUpdate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnUpdate.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUpdate.Location = new System.Drawing.Point(6, 30);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(95, 38);
+            this.btnUpdate.TabIndex = 2;
+            this.btnUpdate.Text = "Cập nhật";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.button2_Click);
             // 
             // groupBox5
             // 
@@ -335,7 +346,7 @@
             this.groupBox5.ForeColor = System.Drawing.Color.Green;
             this.groupBox5.Location = new System.Drawing.Point(499, 54);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(762, 609);
+            this.groupBox5.Size = new System.Drawing.Size(762, 655);
             this.groupBox5.TabIndex = 7;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Danh sách phòng";
@@ -357,7 +368,7 @@
             this.dtgvRoom.Name = "dtgvRoom";
             this.dtgvRoom.RowHeadersWidth = 51;
             this.dtgvRoom.RowTemplate.Height = 24;
-            this.dtgvRoom.Size = new System.Drawing.Size(720, 565);
+            this.dtgvRoom.Size = new System.Drawing.Size(720, 611);
             this.dtgvRoom.TabIndex = 0;
             this.dtgvRoom.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvRoom_CellClick);
             // 
@@ -431,18 +442,37 @@
             this.groupBox4.Controls.Add(this.button9);
             this.groupBox4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.Color.Green;
-            this.groupBox4.Location = new System.Drawing.Point(273, 531);
+            this.groupBox4.Location = new System.Drawing.Point(273, 575);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(207, 134);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Loại phòng";
             // 
+            // cboRoomId
+            // 
+            this.cboRoomId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRoomId.FormattingEnabled = true;
+            this.cboRoomId.Location = new System.Drawing.Point(26, 70);
+            this.cboRoomId.Name = "cboRoomId";
+            this.cboRoomId.Size = new System.Drawing.Size(188, 33);
+            this.cboRoomId.TabIndex = 6;
+            this.cboRoomId.SelectedIndexChanged += new System.EventHandler(this.cboRoomId_SelectedIndexChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(21, 42);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(95, 25);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Mã phòng";
+            // 
             // FormRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1138, 707);
+            this.ClientSize = new System.Drawing.Size(1138, 757);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -482,10 +512,10 @@
         private System.Windows.Forms.Label lblMaxPeople;
         private System.Windows.Forms.TextBox txtMaxPeople;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.DataGridView dtgvRoom;
         private System.Windows.Forms.ComboBox cboStatus;
@@ -502,5 +532,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MaxPeople;
         private System.Windows.Forms.DataGridViewTextBoxColumn TypeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;
+        private System.Windows.Forms.ComboBox cboRoomId;
+        private System.Windows.Forms.Label label8;
     }
 }

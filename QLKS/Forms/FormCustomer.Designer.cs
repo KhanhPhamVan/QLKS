@@ -35,6 +35,8 @@
             this.cboTypeSearch = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.grbCustomer = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cboCustomerId = new System.Windows.Forms.ComboBox();
             this.txtPhoneNumber = new System.Windows.Forms.TextBox();
             this.txtCustomerIdShow = new System.Windows.Forms.TextBox();
             this.txtCustomerName = new System.Windows.Forms.TextBox();
@@ -110,6 +112,7 @@
             // 
             this.cboTypeSearch.AccessibleDescription = "";
             this.cboTypeSearch.AccessibleName = "";
+            this.cboTypeSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTypeSearch.FormattingEnabled = true;
             this.cboTypeSearch.Items.AddRange(new object[] {
             "Mã định danh",
@@ -132,6 +135,8 @@
             // 
             // grbCustomer
             // 
+            this.grbCustomer.Controls.Add(this.label2);
+            this.grbCustomer.Controls.Add(this.cboCustomerId);
             this.grbCustomer.Controls.Add(this.txtPhoneNumber);
             this.grbCustomer.Controls.Add(this.txtCustomerIdShow);
             this.grbCustomer.Controls.Add(this.txtCustomerName);
@@ -148,10 +153,32 @@
             this.grbCustomer.ForeColor = System.Drawing.Color.Green;
             this.grbCustomer.Location = new System.Drawing.Point(30, 207);
             this.grbCustomer.Name = "grbCustomer";
-            this.grbCustomer.Size = new System.Drawing.Size(436, 238);
+            this.grbCustomer.Size = new System.Drawing.Size(436, 289);
             this.grbCustomer.TabIndex = 0;
             this.grbCustomer.TabStop = false;
             this.grbCustomer.Text = "Thông tin khách hàng";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 30);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(133, 25);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Mã khách hàng";
+            // 
+            // cboCustomerId
+            // 
+            this.cboCustomerId.AccessibleDescription = "";
+            this.cboCustomerId.AccessibleName = "";
+            this.cboCustomerId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCustomerId.FormattingEnabled = true;
+            this.cboCustomerId.Location = new System.Drawing.Point(10, 58);
+            this.cboCustomerId.Name = "cboCustomerId";
+            this.cboCustomerId.Size = new System.Drawing.Size(177, 33);
+            this.cboCustomerId.Sorted = true;
+            this.cboCustomerId.TabIndex = 6;
+            this.cboCustomerId.SelectedIndexChanged += new System.EventHandler(this.cboCustomerId_SelectedIndexChanged);
             // 
             // txtPhoneNumber
             // 
@@ -164,7 +191,7 @@
             // txtCustomerIdShow
             // 
             this.txtCustomerIdShow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCustomerIdShow.Location = new System.Drawing.Point(4, 120);
+            this.txtCustomerIdShow.Location = new System.Drawing.Point(13, 184);
             this.txtCustomerIdShow.Name = "txtCustomerIdShow";
             this.txtCustomerIdShow.Size = new System.Drawing.Size(177, 31);
             this.txtCustomerIdShow.TabIndex = 5;
@@ -172,7 +199,7 @@
             // txtCustomerName
             // 
             this.txtCustomerName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCustomerName.Location = new System.Drawing.Point(4, 58);
+            this.txtCustomerName.Location = new System.Drawing.Point(13, 122);
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.Size = new System.Drawing.Size(177, 31);
             this.txtCustomerName.TabIndex = 5;
@@ -207,7 +234,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 154);
+            this.label8.Location = new System.Drawing.Point(15, 218);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(78, 25);
             this.label8.TabIndex = 3;
@@ -216,7 +243,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 92);
+            this.label5.Location = new System.Drawing.Point(15, 156);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(122, 25);
             this.label5.TabIndex = 3;
@@ -234,7 +261,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 30);
+            this.label4.Location = new System.Drawing.Point(15, 94);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(89, 25);
             this.label4.TabIndex = 3;
@@ -244,6 +271,7 @@
             // 
             this.cboCountry.AccessibleDescription = "";
             this.cboCountry.AccessibleName = "";
+            this.cboCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCountry.FormattingEnabled = true;
             this.cboCountry.Location = new System.Drawing.Point(240, 184);
             this.cboCountry.Name = "cboCountry";
@@ -254,8 +282,9 @@
             // 
             this.cboGender.AccessibleDescription = "";
             this.cboGender.AccessibleName = "";
+            this.cboGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboGender.FormattingEnabled = true;
-            this.cboGender.Location = new System.Drawing.Point(4, 182);
+            this.cboGender.Location = new System.Drawing.Point(13, 246);
             this.cboGender.Name = "cboGender";
             this.cboGender.Size = new System.Drawing.Size(177, 33);
             this.cboGender.TabIndex = 0;
@@ -268,7 +297,7 @@
             this.groupBox3.Controls.Add(this.btnUpdate);
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.Green;
-            this.groupBox3.Location = new System.Drawing.Point(30, 468);
+            this.groupBox3.Location = new System.Drawing.Point(25, 516);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(436, 134);
             this.groupBox3.TabIndex = 3;
@@ -346,7 +375,7 @@
             this.groupBox4.ForeColor = System.Drawing.Color.Green;
             this.groupBox4.Location = new System.Drawing.Point(516, 47);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(762, 555);
+            this.groupBox4.Size = new System.Drawing.Size(762, 603);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Danh sách khách hàng";
@@ -368,7 +397,7 @@
             this.dtgvCustomer.Name = "dtgvCustomer";
             this.dtgvCustomer.RowHeadersWidth = 51;
             this.dtgvCustomer.RowTemplate.Height = 24;
-            this.dtgvCustomer.Size = new System.Drawing.Size(738, 511);
+            this.dtgvCustomer.Size = new System.Drawing.Size(738, 559);
             this.dtgvCustomer.TabIndex = 0;
             this.dtgvCustomer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvCustomer_CellClick);
             // 
@@ -425,7 +454,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1306, 632);
+            this.ClientSize = new System.Drawing.Size(1306, 662);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.grbCustomer);
@@ -482,5 +511,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DoB;
         private System.Windows.Forms.DataGridViewTextBoxColumn Gender;
         private System.Windows.Forms.DataGridViewTextBoxColumn Country;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cboCustomerId;
     }
 }
