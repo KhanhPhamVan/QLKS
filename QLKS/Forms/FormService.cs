@@ -85,7 +85,7 @@ namespace QLKS.Forms
             Service service= new Service();
             service.Name = txtName.Text;
             service.Price = decimal.Parse(txtPrice.Text);
-            if (!db.AddRow(service))
+            if (db.AddRow(service) == null)
             {
                 MessageBox.Show("Thêm dịch vụ không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -153,7 +153,7 @@ namespace QLKS.Forms
             if (MessageBox.Show("Bạn có chắc muốn xóa dịch vụ này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 return;
             Func<Service, bool> predicate = p => p.Id == int.Parse(cboId.Text);
-            if (db.DeleteRows(predicate) == 0)
+            if (db.DeleteRows<Service>($"MADV={cboId.Text}") == 0)
             {
                 MessageBox.Show("Xóa dịch vụ không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;

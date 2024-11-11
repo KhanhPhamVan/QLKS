@@ -15,6 +15,7 @@ namespace QLKS.ViewModels
 
         public Room Room { get => room; set => room = value; }
         public RoomType RoomType { get => roomType; set => roomType = value; }
+        public int Id { get; set; }
         public string Number {  get; set; }
         public string Status {  get; set; }
         public int RoomTypeId { get; set; }
@@ -27,6 +28,7 @@ namespace QLKS.ViewModels
         }
         public ReservationRoomStatus(Room room, DbContext db)
         {
+            Id = room.Id;
             Number = room.Name;
             Status = room.Status;
             RoomTypeId=room.RoomType;

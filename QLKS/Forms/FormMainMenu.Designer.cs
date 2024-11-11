@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMainMenu));
             this.panel_SideBar = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.btn_Task6 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_Task5 = new System.Windows.Forms.Button();
             this.btn_Task4 = new System.Windows.Forms.Button();
@@ -48,6 +50,8 @@
             // panel_SideBar
             // 
             this.panel_SideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.panel_SideBar.Controls.Add(this.button3);
+            this.panel_SideBar.Controls.Add(this.btn_Task6);
             this.panel_SideBar.Controls.Add(this.button1);
             this.panel_SideBar.Controls.Add(this.btn_Task5);
             this.panel_SideBar.Controls.Add(this.btn_Task4);
@@ -60,6 +64,43 @@
             this.panel_SideBar.Name = "panel_SideBar";
             this.panel_SideBar.Size = new System.Drawing.Size(220, 696);
             this.panel_SideBar.TabIndex = 0;
+            // 
+            // button3
+            // 
+            this.button3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.Gainsboro;
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.Location = new System.Drawing.Point(0, 621);
+            this.button3.Name = "button3";
+            this.button3.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.button3.Size = new System.Drawing.Size(220, 75);
+            this.button3.TabIndex = 8;
+            this.button3.Text = "   Đăng xuất";
+            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // btn_Task6
+            // 
+            this.btn_Task6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Task6.FlatAppearance.BorderSize = 0;
+            this.btn_Task6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Task6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Task6.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btn_Task6.Image = ((System.Drawing.Image)(resources.GetObject("btn_Task6.Image")));
+            this.btn_Task6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Task6.Location = new System.Drawing.Point(0, 530);
+            this.btn_Task6.Name = "btn_Task6";
+            this.btn_Task6.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btn_Task6.Size = new System.Drawing.Size(220, 75);
+            this.btn_Task6.TabIndex = 7;
+            this.btn_Task6.Text = "   Thông tin tài khoản";
+            this.btn_Task6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_Task6.UseVisualStyleBackColor = true;
+            this.btn_Task6.Click += new System.EventHandler(this.btn_Task6_Click);
             // 
             // button1
             // 
@@ -203,11 +244,11 @@
             this.btn_CloseChildForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_CloseChildForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_CloseChildForm.ForeColor = System.Drawing.Color.White;
+            this.btn_CloseChildForm.Image = ((System.Drawing.Image)(resources.GetObject("btn_CloseChildForm.Image")));
             this.btn_CloseChildForm.Location = new System.Drawing.Point(0, 0);
             this.btn_CloseChildForm.Name = "btn_CloseChildForm";
             this.btn_CloseChildForm.Size = new System.Drawing.Size(66, 80);
             this.btn_CloseChildForm.TabIndex = 1;
-            this.btn_CloseChildForm.Text = "X";
             this.btn_CloseChildForm.UseVisualStyleBackColor = true;
             this.btn_CloseChildForm.Visible = false;
             this.btn_CloseChildForm.Click += new System.EventHandler(this.btn_CloseChildForm_Click);
@@ -267,5 +308,7 @@
         private System.Windows.Forms.Button btn_CloseChildForm;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panelMain;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_Task6;
     }
 }

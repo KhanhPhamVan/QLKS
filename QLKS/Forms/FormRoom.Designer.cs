@@ -35,6 +35,8 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cboRoomId = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.cboStatus = new System.Windows.Forms.ComboBox();
             this.cboTypeId = new System.Windows.Forms.ComboBox();
             this.lblMaxPeople = new System.Windows.Forms.Label();
@@ -63,8 +65,6 @@
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button9 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.cboRoomId = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -156,13 +156,31 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin phòng";
             // 
+            // cboRoomId
+            // 
+            this.cboRoomId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRoomId.FormattingEnabled = true;
+            this.cboRoomId.Location = new System.Drawing.Point(26, 70);
+            this.cboRoomId.Name = "cboRoomId";
+            this.cboRoomId.Size = new System.Drawing.Size(188, 33);
+            this.cboRoomId.TabIndex = 6;
+            this.cboRoomId.SelectedIndexChanged += new System.EventHandler(this.cboRoomId_SelectedIndexChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(21, 42);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(95, 25);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Mã phòng";
+            // 
             // cboStatus
             // 
             this.cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboStatus.FormattingEnabled = true;
             this.cboStatus.Items.AddRange(new object[] {
-            "Phòng trống",
-            "Đã đặt"});
+            "Phòng trống"});
             this.cboStatus.Location = new System.Drawing.Point(26, 298);
             this.cboStatus.Name = "cboStatus";
             this.cboStatus.Size = new System.Drawing.Size(188, 33);
@@ -448,25 +466,6 @@
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Loại phòng";
-            // 
-            // cboRoomId
-            // 
-            this.cboRoomId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboRoomId.FormattingEnabled = true;
-            this.cboRoomId.Location = new System.Drawing.Point(26, 70);
-            this.cboRoomId.Name = "cboRoomId";
-            this.cboRoomId.Size = new System.Drawing.Size(188, 33);
-            this.cboRoomId.TabIndex = 6;
-            this.cboRoomId.SelectedIndexChanged += new System.EventHandler(this.cboRoomId_SelectedIndexChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(21, 42);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(95, 25);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "Mã phòng";
             // 
             // FormRoom
             // 

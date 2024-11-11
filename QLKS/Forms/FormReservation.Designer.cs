@@ -28,17 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormReservation));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.dtpStart = new System.Windows.Forms.DateTimePicker();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnBooking = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.dtgvListBookedRoom = new System.Windows.Forms.DataGridView();
-            this.dateTimePicker5 = new System.Windows.Forms.DateTimePicker();
+            this.RoomNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtpEnd = new System.Windows.Forms.DateTimePicker();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.lsvRoomBooked = new System.Windows.Forms.ListView();
             this.label5 = new System.Windows.Forms.Label();
@@ -71,13 +75,9 @@
             this.txtRoomTypeName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dtpExpectedRoom = new System.Windows.Forms.DateTimePicker();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.dtpArrivedDate = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtRoomNumber = new System.Windows.Forms.TextBox();
+            this.cboRoomNumber = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.button6 = new System.Windows.Forms.Button();
@@ -93,9 +93,8 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label18 = new System.Windows.Forms.Label();
-            this.RoomNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ArrivedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExpectedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.xóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -112,6 +111,7 @@
             this.groupBox10.SuspendLayout();
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -129,10 +129,10 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.dateTimePicker3);
+            this.tabPage1.Controls.Add(this.dtpStart);
             this.tabPage1.Controls.Add(this.groupBox6);
             this.tabPage1.Controls.Add(this.groupBox7);
-            this.tabPage1.Controls.Add(this.dateTimePicker5);
+            this.tabPage1.Controls.Add(this.dtpEnd);
             this.tabPage1.Controls.Add(this.groupBox8);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.label17);
@@ -151,21 +151,22 @@
             this.tabPage1.Text = "Đặt phòng";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker3
+            // dtpStart
             // 
-            this.dateTimePicker3.CalendarForeColor = System.Drawing.Color.SeaGreen;
-            this.dateTimePicker3.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker3.Location = new System.Drawing.Point(743, 24);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(180, 31);
-            this.dateTimePicker3.TabIndex = 21;
+            this.dtpStart.CalendarForeColor = System.Drawing.Color.SeaGreen;
+            this.dtpStart.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpStart.Location = new System.Drawing.Point(743, 24);
+            this.dtpStart.Name = "dtpStart";
+            this.dtpStart.Size = new System.Drawing.Size(180, 31);
+            this.dtpStart.TabIndex = 21;
+            this.dtpStart.ValueChanged += new System.EventHandler(this.dtpStart_ValueChanged);
             // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.button5);
-            this.groupBox6.Controls.Add(this.button4);
-            this.groupBox6.Controls.Add(this.button2);
+            this.groupBox6.Controls.Add(this.btnCancel);
+            this.groupBox6.Controls.Add(this.btnBooking);
             this.groupBox6.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.ForeColor = System.Drawing.Color.Green;
             this.groupBox6.Location = new System.Drawing.Point(479, 376);
@@ -190,35 +191,37 @@
             this.button5.Text = "Đóng";
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnCancel
             // 
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Green;
-            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(28, 120);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(175, 38);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "Hủy";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
+            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancel.Location = new System.Drawing.Point(28, 120);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(175, 38);
+            this.btnCancel.TabIndex = 2;
+            this.btnCancel.Text = "Hủy";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // button2
+            // btnBooking
             // 
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Green;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(29, 58);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(175, 38);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Đặt phòng";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnBooking.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnBooking.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnBooking.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnBooking.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBooking.Image = ((System.Drawing.Image)(resources.GetObject("btnBooking.Image")));
+            this.btnBooking.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBooking.Location = new System.Drawing.Point(29, 58);
+            this.btnBooking.Name = "btnBooking";
+            this.btnBooking.Size = new System.Drawing.Size(175, 38);
+            this.btnBooking.TabIndex = 2;
+            this.btnBooking.Text = "Đặt phòng";
+            this.btnBooking.UseVisualStyleBackColor = true;
+            this.btnBooking.Click += new System.EventHandler(this.btnBooking_Click);
             // 
             // groupBox7
             // 
@@ -239,24 +242,45 @@
             this.dtgvListBookedRoom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvListBookedRoom.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.RoomNumber,
-            this.ArrivedDate,
-            this.ExpectedDate});
+            this.Column1,
+            this.Column2});
             this.dtgvListBookedRoom.Location = new System.Drawing.Point(13, 30);
             this.dtgvListBookedRoom.Name = "dtgvListBookedRoom";
             this.dtgvListBookedRoom.RowHeadersWidth = 51;
             this.dtgvListBookedRoom.RowTemplate.Height = 24;
             this.dtgvListBookedRoom.Size = new System.Drawing.Size(533, 212);
             this.dtgvListBookedRoom.TabIndex = 0;
+            this.dtgvListBookedRoom.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtgvListBookedRoom_CellMouseDown);
             // 
-            // dateTimePicker5
+            // RoomNumber
             // 
-            this.dateTimePicker5.CalendarForeColor = System.Drawing.Color.SeaGreen;
-            this.dateTimePicker5.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker5.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker5.Location = new System.Drawing.Point(1022, 24);
-            this.dateTimePicker5.Name = "dateTimePicker5";
-            this.dateTimePicker5.Size = new System.Drawing.Size(180, 31);
-            this.dateTimePicker5.TabIndex = 22;
+            this.RoomNumber.DataPropertyName = "RoomNumber";
+            this.RoomNumber.HeaderText = "Số phòng";
+            this.RoomNumber.MinimumWidth = 6;
+            this.RoomNumber.Name = "RoomNumber";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Ngày nhận phòng";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Ngày trả phòng";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            // 
+            // dtpEnd
+            // 
+            this.dtpEnd.CalendarForeColor = System.Drawing.Color.SeaGreen;
+            this.dtpEnd.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpEnd.Location = new System.Drawing.Point(1022, 24);
+            this.dtpEnd.Name = "dtpEnd";
+            this.dtpEnd.Size = new System.Drawing.Size(180, 31);
+            this.dtpEnd.TabIndex = 22;
+            this.dtpEnd.ValueChanged += new System.EventHandler(this.dtpEnd_ValueChanged);
             // 
             // groupBox8
             // 
@@ -281,6 +305,7 @@
             this.lsvRoomBooked.TabIndex = 0;
             this.lsvRoomBooked.UseCompatibleStateImageBehavior = false;
             this.lsvRoomBooked.View = System.Windows.Forms.View.List;
+            this.lsvRoomBooked.SelectedIndexChanged += new System.EventHandler(this.lsvRoomEmpty_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -467,9 +492,9 @@
             this.groupBox3.Controls.Add(this.txtCustomerId);
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.Green;
-            this.groupBox3.Location = new System.Drawing.Point(32, 252);
+            this.groupBox3.Location = new System.Drawing.Point(31, 249);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(441, 118);
+            this.groupBox3.Size = new System.Drawing.Size(431, 121);
             this.groupBox3.TabIndex = 16;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tìm kiếm khách hàng";
@@ -482,7 +507,7 @@
             this.btnSearchCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearchCustomer.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchCustomer.Image")));
             this.btnSearchCustomer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSearchCustomer.Location = new System.Drawing.Point(233, 57);
+            this.btnSearchCustomer.Location = new System.Drawing.Point(234, 50);
             this.btnSearchCustomer.Name = "btnSearchCustomer";
             this.btnSearchCustomer.Size = new System.Drawing.Size(188, 38);
             this.btnSearchCustomer.TabIndex = 10;
@@ -493,7 +518,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 36);
+            this.label10.Location = new System.Drawing.Point(6, 27);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(122, 25);
             this.label10.TabIndex = 9;
@@ -502,7 +527,7 @@
             // txtCustomerId
             // 
             this.txtCustomerId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCustomerId.Location = new System.Drawing.Point(6, 64);
+            this.txtCustomerId.Location = new System.Drawing.Point(16, 55);
             this.txtCustomerId.Name = "txtCustomerId";
             this.txtCustomerId.Size = new System.Drawing.Size(188, 31);
             this.txtCustomerId.TabIndex = 1;
@@ -591,30 +616,17 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dtpExpectedRoom);
             this.groupBox1.Controls.Add(this.btnAdd);
-            this.groupBox1.Controls.Add(this.dtpArrivedDate);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtRoomNumber);
+            this.groupBox1.Controls.Add(this.cboRoomNumber);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.Green;
             this.groupBox1.Location = new System.Drawing.Point(32, 52);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(430, 194);
+            this.groupBox1.Size = new System.Drawing.Size(430, 149);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin đặt phòng";
-            // 
-            // dtpExpectedRoom
-            // 
-            this.dtpExpectedRoom.CalendarForeColor = System.Drawing.Color.SeaGreen;
-            this.dtpExpectedRoom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpExpectedRoom.Location = new System.Drawing.Point(20, 144);
-            this.dtpExpectedRoom.Name = "dtpExpectedRoom";
-            this.dtpExpectedRoom.Size = new System.Drawing.Size(180, 31);
-            this.dtpExpectedRoom.TabIndex = 8;
             // 
             // btnAdd
             // 
@@ -624,7 +636,7 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdd.Location = new System.Drawing.Point(242, 137);
+            this.btnAdd.Location = new System.Drawing.Point(233, 55);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(182, 38);
             this.btnAdd.TabIndex = 2;
@@ -632,49 +644,24 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // dtpArrivedDate
-            // 
-            this.dtpArrivedDate.CalendarForeColor = System.Drawing.Color.SeaGreen;
-            this.dtpArrivedDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpArrivedDate.Location = new System.Drawing.Point(243, 69);
-            this.dtpArrivedDate.Name = "dtpArrivedDate";
-            this.dtpArrivedDate.Size = new System.Drawing.Size(180, 31);
-            this.dtpArrivedDate.TabIndex = 8;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 114);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(138, 25);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Ngày trả phòng";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(238, 39);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(156, 25);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Ngày nhận phòng";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 39);
+            this.label3.Location = new System.Drawing.Point(15, 30);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 25);
             this.label3.TabIndex = 5;
             this.label3.Text = "Số phòng";
             // 
-            // txtRoomNumber
+            // cboRoomNumber
             // 
-            this.txtRoomNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtRoomNumber.Location = new System.Drawing.Point(20, 69);
-            this.txtRoomNumber.Name = "txtRoomNumber";
-            this.txtRoomNumber.Size = new System.Drawing.Size(188, 31);
-            this.txtRoomNumber.TabIndex = 1;
+            this.cboRoomNumber.AccessibleDescription = "";
+            this.cboRoomNumber.AccessibleName = "";
+            this.cboRoomNumber.FormattingEnabled = true;
+            this.cboRoomNumber.Location = new System.Drawing.Point(20, 57);
+            this.cboRoomNumber.Name = "cboRoomNumber";
+            this.cboRoomNumber.Size = new System.Drawing.Size(177, 33);
+            this.cboRoomNumber.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -836,26 +823,21 @@
             this.label18.TabIndex = 14;
             this.label18.Text = "CHI TIẾT ĐẶT PHÒNG";
             // 
-            // RoomNumber
+            // contextMenuStrip1
             // 
-            this.RoomNumber.DataPropertyName = "RoomNumber";
-            this.RoomNumber.HeaderText = "Số phòng";
-            this.RoomNumber.MinimumWidth = 6;
-            this.RoomNumber.Name = "RoomNumber";
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.xóaToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(109, 30);
             // 
-            // ArrivedDate
+            // xóaToolStripMenuItem
             // 
-            this.ArrivedDate.DataPropertyName = "ArrivedDate";
-            this.ArrivedDate.HeaderText = "Ngày nhận phòng";
-            this.ArrivedDate.MinimumWidth = 6;
-            this.ArrivedDate.Name = "ArrivedDate";
-            // 
-            // ExpectedDate
-            // 
-            this.ExpectedDate.DataPropertyName = "ExpectedDate";
-            this.ExpectedDate.HeaderText = "Ngày trả phòng";
-            this.ExpectedDate.MinimumWidth = 6;
-            this.ExpectedDate.Name = "ExpectedDate";
+            this.xóaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("xóaToolStripMenuItem.Image")));
+            this.xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
+            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(108, 26);
+            this.xóaToolStripMenuItem.Text = "Xóa";
+            this.xóaToolStripMenuItem.Click += new System.EventHandler(this.xóaToolStripMenuItem_Click);
             // 
             // FormReservation
             // 
@@ -890,6 +872,7 @@
             this.groupBox10.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -900,8 +883,8 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnBooking;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox txtPhoneNumber;
@@ -918,7 +901,6 @@
         private System.Windows.Forms.ComboBox cboGender;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.TextBox txtCustomerId;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label8;
@@ -927,18 +909,12 @@
         private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.TextBox txtRoomTypeName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DateTimePicker dtpExpectedRoom;
-        private System.Windows.Forms.DateTimePicker dtpArrivedDate;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.DataGridView dtgvListBookedRoom;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker5;
+        private System.Windows.Forms.DateTimePicker dtpStart;
+        private System.Windows.Forms.DateTimePicker dtpEnd;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
@@ -951,7 +927,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Button btnSearchCustomer;
-        private System.Windows.Forms.TextBox txtRoomNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
@@ -960,8 +935,14 @@
         private System.Windows.Forms.ListView lsvRoomBooked;
         private System.Windows.Forms.ListView lsvRoomEmpty;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cboRoomNumber;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem xóaToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn RoomNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ArrivedDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ExpectedDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }

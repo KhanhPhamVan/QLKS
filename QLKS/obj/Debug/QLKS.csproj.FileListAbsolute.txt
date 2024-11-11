@@ -1,3 +1,6 @@
+E:\Năm3\Đồ án Công nghệ .NET\Sao lưu Github\QLKS\QLKS\bin\Debug\QLKS.exe.config
+E:\Năm3\Đồ án Công nghệ .NET\Sao lưu Github\QLKS\QLKS\bin\Debug\QLKS.exe
+E:\Năm3\Đồ án Công nghệ .NET\Sao lưu Github\QLKS\QLKS\bin\Debug\QLKS.pdb
 E:\Năm3\Đồ án Công nghệ .NET\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.csproj.AssemblyReference.cache
 E:\Năm3\Đồ án Công nghệ .NET\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.Forms.FormAccount.resources
 E:\Năm3\Đồ án Công nghệ .NET\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.Forms.FormChangeRoom.resources
@@ -13,8 +16,29 @@ E:\Năm3\Đồ án Công nghệ .NET\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.Fo
 E:\Năm3\Đồ án Công nghệ .NET\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.Properties.Resources.resources
 E:\Năm3\Đồ án Công nghệ .NET\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.csproj.GenerateResource.cache
 E:\Năm3\Đồ án Công nghệ .NET\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.csproj.CoreCompileInputs.cache
-E:\Năm3\Đồ án Công nghệ .NET\Sao lưu Github\QLKS\QLKS\bin\Debug\QLKS.exe.config
-E:\Năm3\Đồ án Công nghệ .NET\Sao lưu Github\QLKS\QLKS\bin\Debug\QLKS.exe
-E:\Năm3\Đồ án Công nghệ .NET\Sao lưu Github\QLKS\QLKS\bin\Debug\QLKS.pdb
 E:\Năm3\Đồ án Công nghệ .NET\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.exe
 E:\Năm3\Đồ án Công nghệ .NET\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.pdb
+E:\Năm3\Đồ án Công nghệ .NET\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.Forms.FormLogin.resources
+E:\Năm3\Đồ án Công nghệ .NET\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.Forms.FormInformation.resources
+E:\Năm3\Đồ án Công nghệ .NET Test\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.csproj.AssemblyReference.cache
+E:\Năm3\Đồ án Công nghệ .NET Test\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.Forms.FormAccount.resources
+E:\Năm3\Đồ án Công nghệ .NET Test\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.Forms.FormChangeRoom.resources
+E:\Năm3\Đồ án Công nghệ .NET Test\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.Forms.FormCustomer.resources
+E:\Năm3\Đồ án Công nghệ .NET Test\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.Forms.FormInformation.resources
+E:\Năm3\Đồ án Công nghệ .NET Test\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.Forms.FormLogin.resources
+E:\Năm3\Đồ án Công nghệ .NET Test\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.FormMainMenu.resources
+E:\Năm3\Đồ án Công nghệ .NET Test\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.FormReservation.resources
+E:\Năm3\Đồ án Công nghệ .NET Test\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.Forms.FormRoom.resources
+E:\Năm3\Đồ án Công nghệ .NET Test\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.Forms.FormRoomManagement.resources
+E:\Năm3\Đồ án Công nghệ .NET Test\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.Forms.FormRoomType.resources
+E:\Năm3\Đồ án Công nghệ .NET Test\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.Forms.FormService.resources
+E:\Năm3\Đồ án Công nghệ .NET Test\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.Forms.FormStaff.resources
+E:\Năm3\Đồ án Công nghệ .NET Test\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.Forms.FormUsingService.resources
+E:\Năm3\Đồ án Công nghệ .NET Test\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.Properties.Resources.resources
+E:\Năm3\Đồ án Công nghệ .NET Test\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.csproj.GenerateResource.cache
+E:\Năm3\Đồ án Công nghệ .NET Test\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.csproj.CoreCompileInputs.cache
+E:\Năm3\Đồ án Công nghệ .NET Test\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.exe
+E:\Năm3\Đồ án Công nghệ .NET Test\Sao lưu Github\QLKS\QLKS\obj\Debug\QLKS.pdb
+E:\Năm3\Đồ án Công nghệ .NET Test\Sao lưu Github\QLKS\QLKS\bin\Debug\QLKS.exe.config
+E:\Năm3\Đồ án Công nghệ .NET Test\Sao lưu Github\QLKS\QLKS\bin\Debug\QLKS.exe
+E:\Năm3\Đồ án Công nghệ .NET Test\Sao lưu Github\QLKS\QLKS\bin\Debug\QLKS.pdb

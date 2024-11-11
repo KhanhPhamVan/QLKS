@@ -31,6 +31,7 @@ namespace QLKS.Forms
         void LoadCustomerId()
         {
             cboCustomerId.DataSource = null;
+            cboCustomerId.Items.Clear();
             foreach (Customer customer in db.GetTable<Customer>())
             {
                 cboCustomerId.Items.Add(customer.Id);
@@ -92,7 +93,8 @@ namespace QLKS.Forms
             customer.Country=cboCountry.Text;
             customer.Phone=txtPhoneNumber.Text;
             customer.UniqueNumber=txtCustomerIdShow.Text;
-            if(!db.AddRow(customer))
+            var addedCustomer = db.AddRow(customer);
+            if (addedCustomer==null)
             {
                 MessageBox.Show("Thêm khách hàng không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -109,7 +111,7 @@ namespace QLKS.Forms
                 DataGridViewRow row=dtgvCustomer.Rows[e.RowIndex];
                 txtCustomerName.Text = row.Cells["NameCustomer"].Value?.ToString();
                 txtPhoneNumber.Text = row.Cells["Phone"].Value?.ToString();
-                DateTime date = DateTime.ParseExact(row.Cells["DoB"].Value?.ToString(), "dd/MM/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+                DateTime date = DateTime.ParseExact(row.Cells["DoB"].Value?.ToString(), "d/MM/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
                 dtpDoB.Value = date.Date;
                 cboCountry.Text = row.Cells["Country"].Value?.ToString();
                 cboGender.Text = row.Cells["Gender"].Value?.ToString();
@@ -171,8 +173,7 @@ namespace QLKS.Forms
             customer.Phone = txtPhoneNumber.Text;
             customer.UniqueNumber = txtCustomerIdShow.Text;
             customer.Id = int.Parse(cboCustomerId.Text);
-            Func<Customer, bool> predicate =p=>p.Id == customer.Id;
-            if (db.DeleteRows(predicate) == 0)
+            if (db.DeleteRows<Customer>($"MAKH={customer.Id.ToString()}")==0)
             {
                 MessageBox.Show("Xóa khách hàng không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;

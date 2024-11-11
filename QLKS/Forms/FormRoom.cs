@@ -132,7 +132,7 @@ namespace QLKS.Forms
             room.Name=txtNumber.Text;
             room.Status=cboStatus.Text;
             room.RoomType =int.Parse(cboTypeId.Text);
-            if (!db.AddRow(room))
+            if (db.AddRow(room)==null)
             {
                 MessageBox.Show("Thêm phòng không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -236,7 +236,7 @@ namespace QLKS.Forms
             if (MessageBox.Show("Bạn có chắc muốn xóa phòng này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 return;
             Func<Room, bool> predicate = p => p.Id == int.Parse(cboRoomId.Text);
-            if(db.DeleteRows(predicate)==0)
+            if(db.DeleteRows<Room>($"MAPHONG={cboRoomId.Text}") == 0)
             {
                 MessageBox.Show("Xóa phòng không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;

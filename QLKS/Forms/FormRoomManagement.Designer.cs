@@ -30,9 +30,9 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.dtpStart = new System.Windows.Forms.DateTimePicker();
             this.label17 = new System.Windows.Forms.Label();
-            this.dateTimePicker5 = new System.Windows.Forms.DateTimePicker();
+            this.dtpEnd = new System.Windows.Forms.DateTimePicker();
             this.panelMain = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -41,9 +41,9 @@
             // 
             this.panel1.AllowDrop = true;
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.dateTimePicker3);
+            this.panel1.Controls.Add(this.dtpStart);
             this.panel1.Controls.Add(this.label17);
-            this.panel1.Controls.Add(this.dateTimePicker5);
+            this.panel1.Controls.Add(this.dtpEnd);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -61,15 +61,16 @@
             this.label5.TabIndex = 23;
             this.label5.Text = "Từ ngày";
             // 
-            // dateTimePicker3
+            // dtpStart
             // 
-            this.dateTimePicker3.CalendarForeColor = System.Drawing.Color.SeaGreen;
-            this.dateTimePicker3.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker3.Location = new System.Drawing.Point(39, 36);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(180, 31);
-            this.dateTimePicker3.TabIndex = 25;
+            this.dtpStart.CalendarForeColor = System.Drawing.Color.SeaGreen;
+            this.dtpStart.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpStart.Location = new System.Drawing.Point(39, 36);
+            this.dtpStart.Name = "dtpStart";
+            this.dtpStart.Size = new System.Drawing.Size(180, 31);
+            this.dtpStart.TabIndex = 25;
+            this.dtpStart.ValueChanged += new System.EventHandler(this.dtpStart_ValueChanged);
             // 
             // label17
             // 
@@ -82,15 +83,16 @@
             this.label17.TabIndex = 24;
             this.label17.Text = "Đến ngày";
             // 
-            // dateTimePicker5
+            // dtpEnd
             // 
-            this.dateTimePicker5.CalendarForeColor = System.Drawing.Color.SeaGreen;
-            this.dateTimePicker5.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker5.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker5.Location = new System.Drawing.Point(310, 36);
-            this.dateTimePicker5.Name = "dateTimePicker5";
-            this.dateTimePicker5.Size = new System.Drawing.Size(180, 31);
-            this.dateTimePicker5.TabIndex = 26;
+            this.dtpEnd.CalendarForeColor = System.Drawing.Color.SeaGreen;
+            this.dtpEnd.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpEnd.Location = new System.Drawing.Point(310, 36);
+            this.dtpEnd.Name = "dtpEnd";
+            this.dtpEnd.Size = new System.Drawing.Size(180, 31);
+            this.dtpEnd.TabIndex = 26;
+            this.dtpEnd.ValueChanged += new System.EventHandler(this.dtpEnd_ValueChanged);
             // 
             // panelMain
             // 
@@ -122,9 +124,9 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.DateTimePicker dtpStart;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.DateTimePicker dateTimePicker5;
+        private System.Windows.Forms.DateTimePicker dtpEnd;
         private System.Windows.Forms.Panel panelMain;
     }
 }

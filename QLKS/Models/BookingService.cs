@@ -13,6 +13,8 @@ namespace QLKS.Models
         public decimal TotalPrice { get; set; }
         [Column("MAPHIEUDATPHONG")]
         public int BookingRoom { get; set; }
+        [Column("MANV")]
+        public int Employee { get; set; }
 
         public BookingService() { }
     }

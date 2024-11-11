@@ -9,6 +9,10 @@ namespace QLKS.Models
         public int Id { get; set; }
         [Column("NGAYLAP")]
         public DateTime InvoiceDate { get; set; }
+        [Column("TIENPHONG")]
+        public decimal RoomPrice { get; set; }
+        [Column("TIENDICHVU")]
+        public decimal ServicePrice { get; set; }
         [Column("TONGTIEN")]
         public decimal TotalPrice { get; set; }
         [Column("MANV")]

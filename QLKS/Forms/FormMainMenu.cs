@@ -92,6 +92,7 @@ namespace QLKS
             childForm.Show();
             //lbl_Title.Text = childForm.Text;
             btn_CloseChildForm.Visible = true;
+            btn_CloseChildForm.Image = ((System.Drawing.Image)(Properties.Resources.exit));
         }
         public void OpenListRoom(Form childForm)
         {
@@ -131,7 +132,9 @@ namespace QLKS
             panel_TitleBar.BackColor = Color.FromArgb(0, 150, 136);
             panel_Logo.BackColor = Color.FromArgb(39, 39, 58);
             currentButton = null;
-            btn_CloseChildForm.Visible = false;
+            btn_CloseChildForm.Text = "";
+            btn_CloseChildForm.Image= ((System.Drawing.Image)(Properties.Resources.refresh));
+            //btn_CloseChildForm.Visible = false;
         }
 
         private void btn_Task3_Click(object sender, EventArgs e)
@@ -162,6 +165,11 @@ namespace QLKS
         private void FormMainMenu_Load(object sender, EventArgs e)
         {
             OpenListRoom(new FormRoomManagement());
+        }
+
+        private void btn_Task6_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormInformation(), sender);
         }
     }
 }

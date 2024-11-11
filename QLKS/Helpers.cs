@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace QLKS
 {
@@ -33,5 +35,26 @@ namespace QLKS
             "Turkmenistan", "Tuvalu", "Úc", "Uganda", "Ukraine", "Uruguay", "Uzbekistan",
             "Vanuatu", "Venezuela", "Việt Nam", "Ý", "Yemen", "Zambia", "Zimbabwe"
         };
+        public static void ClearControl(Control control)
+        {
+            foreach (Control control1 in control.Controls)
+            {
+                if (control1 is TextBox)
+                {
+                    TextBox textBox = (TextBox)control1;
+                    textBox.Clear();
+                }
+                else if (control1 is ComboBox)
+                {
+                    ComboBox comboBox = (ComboBox)control1;
+                    comboBox.SelectedIndex = 0;
+                }
+                else if (control1 is DateTimePicker)
+                {
+                    DateTimePicker dateTimePicker = (DateTimePicker)control1;
+                    dateTimePicker.Value = DateTime.Now;
+                }
+            }
+        }
     }
 }
