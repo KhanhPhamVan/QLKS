@@ -46,9 +46,9 @@ namespace QLKS.Forms
             }
             Customer customer=new Customer();
             if (cboTypeSearch.SelectedIndex == 0) 
-                customer = db.GetTable<Customer>(t => t.UniqueNumber == txtSearch.Text).FirstOrDefault();
+                customer = db.GetTable<Customer>(t => t.UniqueNumber.StartsWith(txtSearch.Text)).FirstOrDefault();
             else
-                customer = db.GetTable<Customer>(t => t.Phone == txtSearch.Text).FirstOrDefault();
+                customer = db.GetTable<Customer>(t => t.Phone.StartsWith(txtSearch.Text)).FirstOrDefault();
             if (customer == null)
             {
                 MessageBox.Show("Không tìm thấy khách hàng này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
