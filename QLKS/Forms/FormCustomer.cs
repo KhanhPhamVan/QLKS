@@ -111,7 +111,7 @@ namespace QLKS.Forms
                 DataGridViewRow row=dtgvCustomer.Rows[e.RowIndex];
                 txtCustomerName.Text = row.Cells["NameCustomer"].Value?.ToString();
                 txtPhoneNumber.Text = row.Cells["Phone"].Value?.ToString();
-                DateTime date = DateTime.ParseExact(row.Cells["DoB"].Value?.ToString(), "d/MM/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+                DateTime date = DateTime.Parse(row.Cells["DoB"].Value?.ToString());
                 dtpDoB.Value = date.Date;
                 cboCountry.Text = row.Cells["Country"].Value?.ToString();
                 cboGender.Text = row.Cells["Gender"].Value?.ToString();
