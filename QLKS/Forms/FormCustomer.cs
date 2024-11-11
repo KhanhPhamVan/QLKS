@@ -80,7 +80,7 @@ namespace QLKS.Forms
                 MessageBox.Show(error, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            Customer temp = db.GetTable<Customer>(t => t.Name == txtCustomerName.Text).FirstOrDefault();
+            Customer temp = db.GetTable<Customer>(t => t.UniqueNumber.Equals(txtCustomerIdShow.Text, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
             if (temp != null)
             {
                 MessageBox.Show("Khách hàng đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
