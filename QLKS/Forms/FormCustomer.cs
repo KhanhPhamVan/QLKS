@@ -94,7 +94,7 @@ namespace QLKS.Forms
             customer.Phone=txtPhoneNumber.Text;
             customer.UniqueNumber=txtCustomerIdShow.Text;
             var addedCustomer = db.AddRow(customer);
-            if (addedCustomer==null)
+            if (addedCustomer.Id == 0)
             {
                 MessageBox.Show("Thêm khách hàng không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
