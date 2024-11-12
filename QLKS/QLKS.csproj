@@ -145,6 +145,7 @@
     <Compile Include="Models\Service.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\BookingRoomViewModel.cs" />
     <Compile Include="ViewModels\LoadingListRoom.cs" />
     <Compile Include="ViewModels\ReservationRoomStatus.cs" />

@@ -24,7 +24,7 @@ namespace QLKS.Forms
 
         private void button9_Click(object sender, EventArgs e)
         {
-            FormAccount formAccount=new Forms.FormAccount();
+            FormAccount formAccount=new FormAccount(account);
             formAccount.ShowDialog(); 
         }
 
@@ -39,13 +39,14 @@ namespace QLKS.Forms
         {
             if (dataGridView1.SelectedRows.Count == 1)
             {
-                textBox2.Text = dataGridView1.SelectedRows[0].Cells["Column3"].Value.ToString();
-                dateTimePicker1.Value = DateTime.Parse(dataGridView1.SelectedRows[0].Cells["Column5"].Value.ToString());
-                textBox4.Text = dataGridView1.SelectedRows[0].Cells["Column2"].Value.ToString();
-                textBox3.Text = dataGridView1.SelectedRows[0].Cells["Column6"].Value.ToString();
-                textBox7.Text = dataGridView1.SelectedRows[0].Cells["Column4"].Value.ToString();
-                textBox6.Text = dataGridView1.SelectedRows[0].Cells["Column7"].Value.ToString();
-                comboBox3.Text = dataGridView1.SelectedRows[0].Cells["Column8"].Value.ToString();
+                Employee emp = dataGridView1.SelectedRows[0].DataBoundItem as Employee;
+                textBox2.Text = emp.Name;
+                dateTimePicker1.Value = emp.DoB;
+                textBox4.Text = emp.UniqueNumber;
+                textBox3.Text = emp.Phone;
+                textBox7.Text = emp.Position;
+                textBox6.Text = emp.Address;
+                comboBox3.Text = emp.Gender;
             }
         }
 
