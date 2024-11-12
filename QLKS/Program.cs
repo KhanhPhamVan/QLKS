@@ -21,7 +21,7 @@ namespace QLKS
             Application.Run(login);
             if (login.Account != null)
             {
-                Application.Run(new FormMainMenu());
+                Application.Run(new FormMainMenu(login.Account));
             }
         }
     }
