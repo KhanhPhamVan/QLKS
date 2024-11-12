@@ -18,16 +18,19 @@ namespace QLKS
 {
     public partial class FormMainMenu : Form
     {
+        Account account;
+
         private Button currentButton;
         private Random random;
         private int tempIndex;
         private Form activeForm;
-        public FormMainMenu()
+        public FormMainMenu(Account account)
         {
             InitializeComponent();
             random = new Random();
             this.Text = string.Empty;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+            this.account = account;
         }
         private Color SelectThemeColor()
         {
@@ -169,7 +172,7 @@ namespace QLKS
 
         private void btn_Task6_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormInformation(), sender);
+            OpenChildForm(new FormInformation(account), sender);
         }
     }
 }
