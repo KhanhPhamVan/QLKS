@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QLKS.Forms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,12 @@ namespace QLKS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMainMenu());
+            FormLogin login = new FormLogin();
+            Application.Run(login);
+            if (login.Account != null)
+            {
+                Application.Run(new FormMainMenu());
+            }
         }
     }
 }
