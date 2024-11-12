@@ -157,7 +157,7 @@ namespace QLKS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormStaff(), sender);
+            OpenChildForm(new FormStaff(account), sender);
         }
 
         private void btn_Task5_Click(object sender, EventArgs e)
