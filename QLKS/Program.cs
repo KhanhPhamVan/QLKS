@@ -17,12 +17,18 @@ namespace QLKS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            FormLogin login = new FormLogin();
-            Application.Run(login);
-            if (login.Account != null)
+            bool logout = false;
+            do
             {
-                Application.Run(new FormMainMenu(login.Account));
-            }
+                FormLogin login = new FormLogin();
+                Application.Run(login);
+                if (login.Account != null)
+                {
+                    FormMainMenu main = new FormMainMenu(login.Account);
+                    Application.Run(main);
+                    logout = main.Logout;
+                }
+            } while (logout);
         }
     }
 }
