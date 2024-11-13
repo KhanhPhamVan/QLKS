@@ -31,6 +31,10 @@ namespace QLKS
             this.Text = string.Empty;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
             this.account = account;
+            if (account.Role == "Tiếp tân")
+            {
+                button1.Visible = false;
+            }
         }
         private Color SelectThemeColor()
         {
