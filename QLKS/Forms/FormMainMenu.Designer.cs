@@ -82,6 +82,7 @@
             this.button3.Text = "   Đăng xuất";
             this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // btn_Task6
             // 
@@ -261,7 +262,7 @@
             this.lbl_Title.ForeColor = System.Drawing.Color.White;
             this.lbl_Title.Location = new System.Drawing.Point(342, 25);
             this.lbl_Title.Name = "lbl_Title";
-            this.lbl_Title.Size = new System.Drawing.Size(347, 36);
+            this.lbl_Title.Size = new System.Drawing.Size(277, 29);
             this.lbl_Title.TabIndex = 0;
             this.lbl_Title.Text = "QUẢN LÝ KHÁCH SẠN";
             // 

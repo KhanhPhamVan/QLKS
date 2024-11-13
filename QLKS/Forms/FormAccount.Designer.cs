@@ -111,9 +111,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(31, 41);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 20);
+            this.label2.Size = new System.Drawing.Size(54, 20);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Mã căn cước";
+            this.label2.Text = "Họ tên";
             // 
             // button1
             // 

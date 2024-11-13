@@ -24,6 +24,9 @@ namespace QLKS
         private Random random;
         private int tempIndex;
         private Form activeForm;
+
+        public bool Logout = false;
+
         public FormMainMenu(Account account)
         {
             InitializeComponent();
@@ -31,6 +34,10 @@ namespace QLKS
             this.Text = string.Empty;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
             this.account = account;
+            if (account.Role == "Tiếp tân")
+            {
+                button1.Visible = false;
+            }
         }
         private Color SelectThemeColor()
         {
@@ -173,6 +180,12 @@ namespace QLKS
         private void btn_Task6_Click(object sender, EventArgs e)
         {
             OpenChildForm(new FormInformation(account), sender);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Logout = true;
+            Close();
         }
     }
 }

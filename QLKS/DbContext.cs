@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Text;
 
 namespace QLKS
 {
@@ -159,7 +160,19 @@ namespace QLKS
             return result;
         }
 
-        public IEnumerable<T> GetTable<T>(string whereCondition, int page = 1, int size = 0)
+        string FromAddition(params Type[] fromAddition)
+        {
+            StringBuilder builder = new StringBuilder();
+            foreach (Type t  in fromAddition)
+            {
+                TableAttribute tableAttr = (TableAttribute)t.GetCustomAttribute(typeof(TableAttribute));
+                if (tableAttr == null) continue;
+                builder.Append($", {tableAttr.Name}");
+            }
+            return builder.ToString();
+        }
+
+        public IEnumerable<T> GetTable<T>(string whereCondition, int page = 1, int size = 0, params Type[] fromAddition)
         {
             List<T> result = new List<T>();
             if (page < 1 || size < 0)
@@ -171,7 +184,7 @@ namespace QLKS
             SqlCommand cmd = conn.CreateCommand();
             if (whereCondition.Length != 0)
                 whereCondition = $"WHERE {whereCondition}";
-            cmd.CommandText = $"SELECT * FROM {tableAttr.Name} {whereCondition} ORDER BY (SELECT NULL) OFFSET {(page - 1) * size} ROWS";
+            cmd.CommandText = $"SELECT {tableAttr.Name}.* FROM {tableAttr.Name}{FromAddition(fromAddition)} {whereCondition} ORDER BY (SELECT NULL) OFFSET {(page - 1) * size} ROWS";
             if (size > 0)
                 cmd.CommandText += $" FETCH NEXT {size} ROWS ONLY";
             cmd.CommandType = CommandType.Text;
