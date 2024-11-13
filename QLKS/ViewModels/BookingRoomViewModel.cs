@@ -53,8 +53,6 @@ namespace QLKS.ViewModels
         {
             foreach (BookingRoom b in db.GetTable<BookingRoom>())
             {
-                Employee employee = db.GetTable<Employee>(x => x.Id == b.Employee).First();
-                Customer customer = db.GetTable<Customer>(x => x.Id == b.Customer).First();
                 yield return new BookingRoomViewModel(b, db, dateFormat);
             }
         }

@@ -170,8 +170,8 @@ namespace QLKS
                 return result;
             SqlCommand cmd = conn.CreateCommand();
             if (whereCondition.Length != 0)
-                whereCondition = $" WHERE {whereCondition} ";
-            cmd.CommandText = $"SELECT * FROM {tableAttr.Name}{whereCondition}ORDER BY (SELECT NULL) OFFSET {(page - 1) * size} ROWS";
+                whereCondition = $"WHERE {whereCondition}";
+            cmd.CommandText = $"SELECT * FROM {tableAttr.Name} {whereCondition} ORDER BY (SELECT NULL) OFFSET {(page - 1) * size} ROWS";
             if (size > 0)
                 cmd.CommandText += $" FETCH NEXT {size} ROWS ONLY";
             cmd.CommandType = CommandType.Text;
