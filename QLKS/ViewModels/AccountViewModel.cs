@@ -1,5 +1,6 @@
 ﻿using QLKS.Models;
 using QLKS.Models.Extensions;
+using System;
 using System.Collections.Generic;
 
 namespace QLKS.ViewModels
@@ -29,9 +30,9 @@ namespace QLKS.ViewModels
             IsActive = account.IsActive;
         }
 
-        public static IEnumerable<AccountViewModel> GetAccounts(DbContext db, string whereCondition = "") 
+        public static IEnumerable<AccountViewModel> GetAccounts(DbContext db, string whereCondition = "", params Type[] fromAddition) 
         {
-            foreach (Account a in db.GetTable<Account>(whereCondition)) { 
+            foreach (Account a in db.GetTable<Account>(whereCondition, fromAddition: fromAddition)) { 
                 yield return new AccountViewModel(a, db);
             }
         }

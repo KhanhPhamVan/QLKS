@@ -139,7 +139,10 @@ namespace QLKS.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Tìm kiếm không khả thi
+            if (textBox1.Text.Length != 0)
+            {
+                dataGridView1.DataSource = AccountViewModel.GetAccounts(db, whereCondition: $"NHANVIEN.MANV = TAIKHOAN.MANV AND TENNV LIKE N'%{textBox1.Text}%'", fromAddition: typeof(Employee)).Where(x => !x.UniqueNumber.Equals(this.account.GetEmployee(db).UniqueNumber)).ToList();
+            }
         }
     }
 }
