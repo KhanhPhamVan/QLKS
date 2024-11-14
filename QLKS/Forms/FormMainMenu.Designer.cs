@@ -62,7 +62,7 @@
             this.panel_SideBar.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_SideBar.Location = new System.Drawing.Point(0, 0);
             this.panel_SideBar.Name = "panel_SideBar";
-            this.panel_SideBar.Size = new System.Drawing.Size(220, 696);
+            this.panel_SideBar.Size = new System.Drawing.Size(220, 801);
             this.panel_SideBar.TabIndex = 0;
             // 
             // button3
@@ -74,7 +74,7 @@
             this.button3.ForeColor = System.Drawing.Color.Gainsboro;
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(0, 621);
+            this.button3.Location = new System.Drawing.Point(0, 726);
             this.button3.Name = "button3";
             this.button3.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.button3.Size = new System.Drawing.Size(220, 75);
@@ -235,7 +235,7 @@
             this.panel_TitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_TitleBar.Location = new System.Drawing.Point(220, 0);
             this.panel_TitleBar.Name = "panel_TitleBar";
-            this.panel_TitleBar.Size = new System.Drawing.Size(951, 80);
+            this.panel_TitleBar.Size = new System.Drawing.Size(1130, 80);
             this.panel_TitleBar.TabIndex = 1;
             // 
             // btn_CloseChildForm
@@ -260,7 +260,7 @@
             this.lbl_Title.AutoSize = true;
             this.lbl_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Title.ForeColor = System.Drawing.Color.White;
-            this.lbl_Title.Location = new System.Drawing.Point(342, 25);
+            this.lbl_Title.Location = new System.Drawing.Point(432, 25);
             this.lbl_Title.Name = "lbl_Title";
             this.lbl_Title.Size = new System.Drawing.Size(277, 29);
             this.lbl_Title.TabIndex = 0;
@@ -273,16 +273,17 @@
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(220, 80);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(951, 616);
+            this.panelMain.Size = new System.Drawing.Size(1130, 721);
             this.panelMain.TabIndex = 2;
             // 
             // FormMainMenu
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.ClientSize = new System.Drawing.Size(1171, 696);
+            this.ClientSize = new System.Drawing.Size(1350, 801);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panel_TitleBar);
             this.Controls.Add(this.panel_SideBar);
+            this.MinimumSize = new System.Drawing.Size(1366, 840);
             this.Name = "FormMainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormMainMenu";
