@@ -26,7 +26,7 @@ namespace QLKS.Forms
         private void FormInformation_Load(object sender, EventArgs e)
         {
             Employee employee = account.GetEmployee(db);
-            textBox8.Text = textBox4.Text = label2.Text = employee.UniqueNumber;
+            textBox8.Text = textBox4.Text = employee.UniqueNumber;
             textBox1.Text = account.Role;
             comboBox3.DataSource = new List<string>() { "Nam", "Nữ" };
             comboBox3.SelectedItem = employee.Gender;
