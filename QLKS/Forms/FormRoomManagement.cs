@@ -15,14 +15,14 @@ namespace QLKS.Forms
 {
     public partial class FormRoomManagement : Form
     {
-        
+
         int disBefore = 0;
         void CreateRoomUI(int index, LoadingListRoom loading, int indexType, string status)
         {
             Panel panelRoom = new Panel();
             if (status == "Đã đặt")
                 panelRoom.BackColor = System.Drawing.Color.DimGray;
-            else if(status == "Đã nhận")
+            else if (status == "Đã nhận")
                 panelRoom.BackColor = System.Drawing.Color.LightSeaGreen;
             else
                 panelRoom.BackColor = System.Drawing.Color.SeaGreen;
@@ -35,7 +35,7 @@ namespace QLKS.Forms
             dayStart.Name = "lbl_dayStart";
             dayStart.Size = new System.Drawing.Size(52, 25);
             dayStart.TabIndex = 0;
-            if (status == "Đã đặt"||status=="Đã nhận")
+            if (status == "Đã đặt" || status == "Đã nhận")
                 dayStart.Text = loading.ArrivedDate;
             else
                 dayStart.Text = "Trống";
@@ -152,32 +152,32 @@ namespace QLKS.Forms
             ToolStripMenuItem menuItem = (ToolStripMenuItem)sender;
             ContextMenuStrip contextMenu = (ContextMenuStrip)menuItem.Owner;
             Panel panel = (Panel)contextMenu.SourceControl;
-            foreach(Control control in panel.Controls)
+            foreach (Control control in panel.Controls)
             {
-                if(control is Label)
+                if (control is Label)
                 {
                     Label label = (Label)control;
                     if (label.Name == "lblRoomStatus")
                     {
-                        if(label.Text=="Phòng đã đặt")
+                        if (label.Text == "Phòng đã đặt")
                         {
-                            MessageBox.Show("Phòng đã được đặt", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);                            
+                            MessageBox.Show("Phòng đã được đặt", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             return;
-                        }  
+                        }
                         else if (label.Text == "Phòng đã nhận")
                         {
                             MessageBox.Show("Phòng đang được thuê", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             return;
-                        }                 
-                    } 
-                    if(label.Name=="lblRoomNumber")
+                        }
+                    }
+                    if (label.Name == "lblRoomNumber")
                     {
-                        FormReservation reservation = new FormReservation(label.Text,dtpStart.Value,dtpEnd.Value);  
+                        FormReservation reservation = new FormReservation(label.Text, dtpStart.Value, dtpEnd.Value);
                         reservation.StartPosition = FormStartPosition.CenterScreen;
                         reservation.ShowDialog();
-                    }    
-                }    
-            }    
+                    }
+                }
+            }
         }
         private void Item2_Click(object sender, EventArgs e)
         {
@@ -203,12 +203,12 @@ namespace QLKS.Forms
                             return;
                         }
                         status = label.Text;
-                    } 
-                    Room room=new Room();
+                    }
+                    Room room = new Room();
                     if (label.Name == "lblRoomNumber")
                     {
                         room = db.GetTable<Room>($"SOPHONG='{label.Text}'").FirstOrDefault();
-                        if (status=="Phòng trống")
+                        if (status == "Phòng trống")
                         {
                             FormReservation reservation = new FormReservation(label.Text, dtpStart.Value, dtpEnd.Value);
                             foreach (Control control1 in reservation.Controls)
@@ -222,23 +222,23 @@ namespace QLKS.Forms
                                             Label label1 = (Label)control2;
                                             label1.Text = "PHIẾU NHẬN PHÒNG";
                                         }
-                                        if(control2.Name == "groupBox6")
+                                        if (control2.Name == "groupBox6")
                                         {
-                                            foreach(Control control3 in control2.Controls)
+                                            foreach (Control control3 in control2.Controls)
                                             {
-                                                if(control3.Name=="btnBooking")
+                                                if (control3.Name == "btnBooking")
                                                 {
                                                     control3.Text = "Nhận phòng";
-                                                }    
-                                            }    
-                                        }    
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
                             reservation.StartPosition = FormStartPosition.CenterScreen;
-                            reservation.ShowDialog();          
-                        }    
-                        else if(status=="Phòng đã đặt")
+                            reservation.ShowDialog();
+                        }
+                        else if (status == "Phòng đã đặt")
                         {
 
                             List<BookingRoomDetail> bookings = db.GetTable<BookingRoomDetail>(t => t.Room == room.Id).ToList();
@@ -250,12 +250,12 @@ namespace QLKS.Forms
                                     Customer customer = db.GetTable<Customer>($"MAKH={booking1.Customer}").FirstOrDefault();
                                     List<Room> rooms = new List<Room>();
                                     List<BookingRoomDetail> booking1s = db.GetTable<BookingRoomDetail>($"MAPHIEUDATPHONG={booking1.Id}").ToList();
-                                    foreach(BookingRoomDetail detail in  booking1s)
+                                    foreach (BookingRoomDetail detail in booking1s)
                                     {
                                         rooms.Add(db.GetTable<Room>($"MAPHONG={detail.Room}").FirstOrDefault());
                                     }
                                     string roomMessage = "Bạn có chắc muốn nhận phòng: ";
-                                    foreach(Room room1 in rooms)
+                                    foreach (Room room1 in rooms)
                                     {
                                         if (room1.Id == rooms[rooms.Count - 1].Id)
                                             roomMessage += room1.Name;
@@ -263,22 +263,22 @@ namespace QLKS.Forms
                                             roomMessage += room1.Name + ", ";
                                     }
                                     roomMessage += $" của khách hàng {customer.Name}";
-                                    if(MessageBox.Show(roomMessage,"Thôn báo",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
+                                    if (MessageBox.Show(roomMessage, "Thôn báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                                     {
-                                        ReceivingRoom receivingRoom=new ReceivingRoom();
-                                        receivingRoom.ReceivingDate=DateTime.Now;
+                                        ReceivingRoom receivingRoom = new ReceivingRoom();
+                                        receivingRoom.ReceivingDate = DateTime.Now;
                                         receivingRoom.BookingRoom = booking1.Id;
                                         receivingRoom.Employee = 1;
                                         db.AddRow<ReceivingRoom>(receivingRoom);
-                                    }    
+                                    }
                                 }
                             }
-                        }    
+                        }
                     }
                 }
             }
         }
-            void LoadRoomType(int indexType, string roomTypeName)
+        void LoadRoomType(int indexType, string roomTypeName)
         {
             Label roomType = new Label();
             roomType.AutoSize = true;
@@ -293,7 +293,7 @@ namespace QLKS.Forms
         void LoadListRoom()
         {
             List<IEnumerable<Room>> rooms = new List<IEnumerable<Room>>();
-            IEnumerable<LoadingListRoom> listRoom = LoadingListRoom.GetRooms(db, dtpStart.Value.Date,dtpEnd.Value.Date);
+            IEnumerable<LoadingListRoom> listRoom = LoadingListRoom.GetRooms(db, dtpStart.Value.Date, dtpEnd.Value.Date);
             IEnumerable<RoomType> roomTypes = db.GetTable<RoomType>();
             List<RoomType> roomTypesCopy = new List<RoomType>();
             foreach (RoomType roomType in roomTypes)
@@ -311,7 +311,7 @@ namespace QLKS.Forms
                 {
                     LoadingListRoom loading = new LoadingListRoom(room, db, dtpStart.Value.Date, dtpEnd.Value.Date);
                     string status = CheckRoomStatus(room.Id, dtpStart.Value.Date, dtpEnd.Value.Date);
-                    if (status == "Đã đặt"|| status == "Đã nhận")
+                    if (status == "Đã đặt" || status == "Đã nhận")
                         loading = listRoom.Where(t => t.IdRoom == room.Id).FirstOrDefault();
                     CreateRoomUI(index, loading, indexType, status);
                     index++;
@@ -366,40 +366,40 @@ namespace QLKS.Forms
             }
             return "Phòng trống";
         }
-        async Task LoadListRoomAsync()
-        {
-            List<IEnumerable<Room>> rooms = new List<IEnumerable<Room>>();
-            IEnumerable<LoadingListRoom> listRoom = await Task.Run(() => LoadingListRoom.GetRooms(db, dtpStart.Value.Date, dtpEnd.Value.Date));
-            IEnumerable<RoomType> roomTypes = await Task.Run(() => db.GetTable<RoomType>());
-            List<RoomType> roomTypesCopy = new List<RoomType>();
+        //async Task LoadListRoomAsync()
+        //{
+        //    List<IEnumerable<Room>> rooms = new List<IEnumerable<Room>>();
+        //    IEnumerable<LoadingListRoom> listRoom = await Task.Run(() => LoadingListRoom.GetRooms(db, dtpStart.Value.Date, dtpEnd.Value.Date));
+        //    IEnumerable<RoomType> roomTypes = await Task.Run(() => db.GetTable<RoomType>());
+        //    List<RoomType> roomTypesCopy = new List<RoomType>();
 
-            foreach (RoomType roomType in roomTypes)
-            {
-                rooms.Add(await Task.Run(() => db.GetTable<Room>(t => t.RoomType == roomType.Id)));
-                roomTypesCopy.Add(roomType);
-            }
+        //    foreach (RoomType roomType in roomTypes)
+        //    {
+        //        rooms.Add(await Task.Run(() => db.GetTable<Room>(t => t.RoomType == roomType.Id)));
+        //        roomTypesCopy.Add(roomType);
+        //    }
 
-            int indexType = 0;
-            int countSum = 0;
-            int countBefore = 0;
-            foreach (IEnumerable<Room> lst in rooms)
-            {
-                int index = 0;
-                foreach (Room room in lst)
-                {
-                    LoadingListRoom loading = new LoadingListRoom(room, db, dtpStart.Value.Date, dtpEnd.Value.Date);
-                    if (room.Status == "Đã đặt" || room.Status == "Đã nhận")
-                        loading = listRoom.Where(t => t.IdRoom == room.Id).First();
-                    CreateRoomUI(index, loading, indexType, CheckRoomStatus(loading.IdRoom, dtpStart.Value, dtpEnd.Value));
-                    index++;
-                    countSum++;
-                }
-                LoadRoomType(indexType, roomTypesCopy[indexType].Name);
-                indexType++;
-                countBefore = lst.Count() - 1;
-                disBefore += (lst.Count() - 1) / 4;
-            }
-        }
+        //    int indexType = 0;
+        //    int countSum = 0;
+        //    int countBefore = 0;
+        //    foreach (IEnumerable<Room> lst in rooms)
+        //    {
+        //        int index = 0;
+        //        foreach (Room room in lst)
+        //        {
+        //            LoadingListRoom loading = new LoadingListRoom(room, db, dtpStart.Value.Date, dtpEnd.Value.Date);
+        //            if (room.Status == "Đã đặt" || room.Status == "Đã nhận")
+        //                loading = listRoom.Where(t => t.IdRoom == room.Id).First();
+        //            CreateRoomUI(index, loading, indexType, CheckRoomStatus(loading.IdRoom, dtpStart.Value, dtpEnd.Value));
+        //            index++;
+        //            countSum++;
+        //        }
+        //        LoadRoomType(indexType, roomTypesCopy[indexType].Name);
+        //        indexType++;
+        //        countBefore = lst.Count() - 1;
+        //        disBefore += (lst.Count() - 1) / 4;
+        //    }
+        //}
 
         public FormRoomManagement()
         {
@@ -413,25 +413,28 @@ namespace QLKS.Forms
         private void FormRoomManagement_Load(object sender, EventArgs e)
         {
             dtpEnd.Value = DateTime.Today.AddDays(1);
+            disBefore = 0;
+            DeletePanel(panelMain);
             LoadListRoom();
         }
         void DeletePanel(Panel panel)
         {
-            foreach(Control control in panel.Controls)
+            foreach (Control control in panel.Controls)
             {
                 control.Dispose();
-            }  
+            }
             panel.Controls.Clear();
         }
         private void dtpStart_ValueChanged(object sender, EventArgs e)
         {
-            if(dtpStart.Value > dtpEnd.Value)
+            if (dtpStart.Value > dtpEnd.Value)
             {
                 MessageBox.Show("Vui lòng nhập ngày bắt đầu không lớn hơn ngày kết thúc!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dtpStart.Value = DateTime.Today;
                 dtpEnd.Value = DateTime.Today.AddDays(1);
                 return;
-            }    
+            }
+            disBefore = 0;
             DeletePanel(panelMain);
             LoadListRoom();
         }
@@ -445,6 +448,7 @@ namespace QLKS.Forms
                 dtpEnd.Value = DateTime.Today.AddDays(1);
                 return;
             }
+            disBefore = 0;
             DeletePanel(panelMain);
             LoadListRoom();
         }
