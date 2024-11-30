@@ -49,13 +49,19 @@ namespace QLKS
                 else if (control1 is ComboBox)
                 {
                     ComboBox comboBox = (ComboBox)control1;
-                    comboBox.SelectedIndex = 0;
+                    comboBox.SelectedIndex = -1;
+                    comboBox.Text = "";
                 }
                 else if (control1 is DateTimePicker)
                 {
                     DateTimePicker dateTimePicker = (DateTimePicker)control1;
                     dateTimePicker.Value = DateTime.Now;
                 }
+                else if(control is DataGridView)
+                {
+                    DataGridView dataGridView = (DataGridView)control1;
+                    dataGridView.Rows.Clear();
+                }    
             }
         }
 

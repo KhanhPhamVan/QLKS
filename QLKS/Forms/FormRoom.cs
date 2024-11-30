@@ -80,6 +80,7 @@ namespace QLKS.Forms
         }
         void LoadRoomId()
         {
+            cboRoomId.Items.Clear();
             foreach (Room room in db.GetTable<Room>())
             {
                 cboRoomId.Items.Add(room.Id);
@@ -140,6 +141,7 @@ namespace QLKS.Forms
             LoadDataSource();
             LoadRoomId();
             MessageBox.Show("Thêm phòng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Helpers.ClearControl(tableLayoutPanel6);
         }
 
         private void cboTypeId_SelectedIndexChanged(object sender, EventArgs e)
@@ -179,6 +181,7 @@ namespace QLKS.Forms
             }    
             LoadDataSource();
             MessageBox.Show("Cập nhật phòng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Helpers.ClearControl(tableLayoutPanel6);
         }
 
         private void cboRoomId_SelectedIndexChanged(object sender, EventArgs e)
@@ -244,6 +247,7 @@ namespace QLKS.Forms
             LoadDataSource();
             LoadRoomId();
             MessageBox.Show("Xóa phòng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Helpers.ClearControl(tableLayoutPanel6);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

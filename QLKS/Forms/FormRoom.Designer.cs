@@ -251,7 +251,7 @@
             this.cboTypeId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cboTypeId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTypeId.FormattingEnabled = true;
-            this.cboTypeId.Location = new System.Drawing.Point(242, 38);
+            this.cboTypeId.Location = new System.Drawing.Point(242, 33);
             this.cboTypeId.Name = "cboTypeId";
             this.cboTypeId.Size = new System.Drawing.Size(223, 33);
             this.cboTypeId.TabIndex = 4;
@@ -284,8 +284,10 @@
             this.cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboStatus.FormattingEnabled = true;
             this.cboStatus.Items.AddRange(new object[] {
-            "Phòng trống"});
-            this.cboStatus.Location = new System.Drawing.Point(3, 248);
+            "Phòng trống",
+            "Đã đặt",
+            "Đã nhận"});
+            this.cboStatus.Location = new System.Drawing.Point(3, 243);
             this.cboStatus.Name = "cboStatus";
             this.cboStatus.Size = new System.Drawing.Size(223, 33);
             this.cboStatus.TabIndex = 4;
@@ -295,7 +297,7 @@
             this.cboRoomId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cboRoomId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboRoomId.FormattingEnabled = true;
-            this.cboRoomId.Location = new System.Drawing.Point(3, 38);
+            this.cboRoomId.Location = new System.Drawing.Point(3, 33);
             this.cboRoomId.Name = "cboRoomId";
             this.cboRoomId.Size = new System.Drawing.Size(223, 33);
             this.cboRoomId.TabIndex = 6;

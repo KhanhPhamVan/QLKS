@@ -27,6 +27,7 @@ namespace QLKS.Forms
         void LoadRoomId()
         {
             cboId.DataSource = null;
+            cboId.Items.Clear();
             foreach (Service service in db.GetTable<Service>())
             {
                 cboId.Items.Add(service.Id);
@@ -93,6 +94,7 @@ namespace QLKS.Forms
             LoadDataSource();
             LoadRoomId();
             MessageBox.Show("Thêm dịch vụ thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Helpers.ClearControl(tableLayoutPanel3);
         }
         string ErrorMessage()
         {
@@ -104,10 +106,14 @@ namespace QLKS.Forms
         }
         private void cboId_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Service service = db.GetTable<Service>(t => t.Id == int.Parse(cboId.Text)).First();
-            txtName.Text = service.Name;
-            txtPrice.Text = service.Price.ToString();
-            cboId.Text = service.Id.ToString();
+            if(cboId.SelectedIndex!=-1)
+            {
+                Service service = db.GetTable<Service>(t => t.Id == int.Parse(cboId.Text)).First();
+                txtName.Text = service.Name;
+                txtPrice.Text = service.Price.ToString();
+                cboId.Text = service.Id.ToString();
+            }    
+            
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -135,6 +141,7 @@ namespace QLKS.Forms
             }
             LoadDataSource();
             MessageBox.Show("Cập nhật dịch vụ thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Helpers.ClearControl(tableLayoutPanel3);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -161,6 +168,7 @@ namespace QLKS.Forms
             LoadDataSource();
             LoadRoomId();
             MessageBox.Show("Xóa dịch vụ thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Helpers.ClearControl(tableLayoutPanel3);
         }
         void ClearControl(Control control)
         {
@@ -174,7 +182,8 @@ namespace QLKS.Forms
                 else if (control1 is ComboBox)
                 {
                     ComboBox comboBox = (ComboBox)control1;
-                    comboBox.SelectedIndex = 0;
+                    comboBox.SelectedIndex = -1;
+                    comboBox.Text = "";
                 }
                 else if (control1 is DateTimePicker)
                 {
@@ -185,8 +194,8 @@ namespace QLKS.Forms
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            ClearControl(groupBox1);
-            ClearControl(groupBox2);
+            ClearControl(tableLayoutPanel3);
+            ClearControl(tableLayoutPanel4);
         }
     }
 }
