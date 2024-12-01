@@ -60,8 +60,9 @@ namespace QLKS.Forms
             {
                 MessageBox.Show("Khách hàng này chưa đặt phòng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
-            }    
-            foreach(BookingRoom booking in bookings)
+            }
+            dtgvBooking.Rows.Clear();
+            foreach (BookingRoom booking in bookings)
             {
                 dtgvBooking.Rows.Add(booking.Id, booking.ArrivedDate.ToString("dd/MM/yyyy"), booking.ExpectedDate.ToString("dd/MM/yyyy"));
             }         
@@ -74,7 +75,6 @@ namespace QLKS.Forms
             cboServiceName.ValueMember = "Id";
             cboServiceName.SelectedIndex = -1;
             isCompleted = true;
-
         }
 
         private void cboServiceName_SelectedIndexChanged(object sender, EventArgs e)
@@ -282,8 +282,10 @@ namespace QLKS.Forms
                 invoice.ServicePrice = TinhTienDichVu(maphieudat);
                 invoice.TotalPrice = invoice.RoomPrice + invoice.ServicePrice;
                 invoice.Employee = 1;
+                BookingRoomDetail detail = db.GetTable<BookingRoomDetail>(x => x.BookingRoom == maphieudat).First();
+                detail.CheckoutDate = DateTime.Now;
                 db.AddRow<Invoice>(invoice);
-
+                db.UpdateRow(detail);
                 if (db == null)
                 {
                     MessageBox.Show("Thêm hóa đơn không thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
