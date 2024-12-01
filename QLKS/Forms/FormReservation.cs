@@ -3,17 +3,12 @@ using QLKS.Models;
 using QLKS.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QLKS
 {
-    
+
     public partial class FormReservation : Form
     {
         string RoomNumberMenu = null;
@@ -22,7 +17,7 @@ namespace QLKS
         DateTime ExpectedDateLoad;
         public class ListRoomBooked
         {
-            
+
             public string RoomNumber { get; set; }
             public string ArrivedDate { get; set; }
             public string ExpectedDate { get; set; }
@@ -63,15 +58,15 @@ namespace QLKS
                 dtpEnd.Value = ExpectedDateLoad.Date;
             }
             DeleteListView(lsvRoomEmpty, lsvRoomBooked);
-            List<string> roomBooked=new List<string>();
+            List<string> roomBooked = new List<string>();
             List<string> roomEmpty = new List<string>();
             foreach (ReservationRoomStatus room in viewModel)
             {
                 string status = CheckRoomStatus(room.Id, dtpStart.Value, dtpEnd.Value);
-                if (status!="Phòng trống")
+                if (status != "Phòng trống")
                 {
                     roomBooked.Add(room.Number);
-                }   
+                }
                 else if (status == "Phòng trống")
                     roomEmpty.Add(room.Number);
             }
@@ -143,7 +138,7 @@ namespace QLKS
         //}
         string CheckRoomStatus(int roomId, DateTime dayStart, DateTime dayEnd)
         {
-            List<BookingRoom> bookings = db.GetTable<BookingRoom>(p => !(p.ExpectedDate<=dayStart.Date||p.ArrivedDate>=dayEnd.Date)).ToList();
+            List<BookingRoom> bookings = db.GetTable<BookingRoom>(p => !(p.ExpectedDate <= dayStart.Date || p.ArrivedDate >= dayEnd.Date)).ToList();
             foreach (BookingRoom booking in bookings)
             {
                 Invoice invoice = db.GetTable<Invoice>(p => p.BookingRoom == booking.Id).FirstOrDefault();
@@ -195,12 +190,12 @@ namespace QLKS
             dtpEnd.Value = DateTime.Today.AddDays(1);
             LoadingList();
             cboCountry.DataSource = Helpers.Countries;
-            cboGender.DataSource=new List<string>{"Nam","Nữ" };
+            cboGender.DataSource = new List<string> { "Nam", "Nữ" };
         }
 
         private void lsvRoomEmpty_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
             ListView listView = (ListView)sender;
             if (listView.SelectedItems.Count > 0)
             {
@@ -219,31 +214,31 @@ namespace QLKS
         private void btnSearchCustomer_Click(object sender, EventArgs e)
         {
             Customer customer = db.GetTable<Customer>(t => t.UniqueNumber == txtCustomerId.Text).FirstOrDefault();
-            if(customer==null)
+            if (customer == null)
             {
                 MessageBox.Show("Không tìm thấy khách hàng này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
-            } 
-            txtCustomerIdShow.Text=customer.UniqueNumber.ToString();
-            txtCustomerName.Text=customer.Name.ToString();
-            dtpDoB.Text=customer.DoB.ToString();
-            txtPhoneNumber.Text=customer.Phone.ToString();
-            cboGender.Text=customer.Gender.ToString();
-            cboCountry.Text=customer.Country.ToString();
+            }
+            txtCustomerIdShow.Text = customer.UniqueNumber.ToString();
+            txtCustomerName.Text = customer.Name.ToString();
+            dtpDoB.Text = customer.DoB.ToString();
+            txtPhoneNumber.Text = customer.Phone.ToString();
+            cboGender.Text = customer.Gender.ToString();
+            cboCountry.Text = customer.Country.ToString();
         }
-        
+
         List<ListRoomBooked> listRooms = new List<ListRoomBooked>();
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrEmpty(cboRoomNumber.Text))
+            if (string.IsNullOrEmpty(cboRoomNumber.Text))
             {
                 MessageBox.Show("Vui lòng chọn số phòng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            foreach(DataGridViewRow row in dtgvListBookedRoom.Rows)
+            foreach (DataGridViewRow row in dtgvListBookedRoom.Rows)
             {
-                foreach(DataGridViewCell cell in row.Cells)
+                foreach (DataGridViewCell cell in row.Cells)
                 {
                     if (cell.Value != null)
                     {
@@ -253,12 +248,12 @@ namespace QLKS
                             return;
                         }
                     }
-                    
-                }    
-            }    
-            
+
+                }
+            }
+
             //listRooms.Add(new ListRoomBooked(cboRoomNumber.Text,dtpArrivedDate.Text,dtpExpectedRoom.Text));
-            dtgvListBookedRoom.Rows.Add(cboRoomNumber.Text,dtpStart.Value.Date.ToString("dd/MM/yyyy"),dtpEnd.Value.Date.ToString("dd/MM/yyyy"));
+            dtgvListBookedRoom.Rows.Add(cboRoomNumber.Text, dtpStart.Value.Date.ToString("dd/MM/yyyy"), dtpEnd.Value.Date.ToString("dd/MM/yyyy"));
             //dtgvListBookedRoom.DataSource = null;
             //dtgvListBookedRoom.DataSource = listRooms;
             dtgvListBookedRoom.Refresh();
@@ -282,7 +277,7 @@ namespace QLKS
 
         private void dtpStart_ValueChanged(object sender, EventArgs e)
         {
-            if(isCompleted)
+            if (isCompleted)
             {
                 if (dtpStart.Value > dtpEnd.Value)
                 {
@@ -293,7 +288,7 @@ namespace QLKS
                 }
 
                 LoadingList();
-            }    
+            }
         }
 
         private void dtpEnd_ValueChanged(object sender, EventArgs e)
@@ -328,9 +323,9 @@ namespace QLKS
 
         private void xóaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(selectedRowIndex >= 0)
+            if (selectedRowIndex >= 0)
             {
-                if(MessageBox.Show("Bạn có muốn xóa phòng này","Thông báo",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
+                if (MessageBox.Show("Bạn có muốn xóa phòng này", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     DataGridViewRow selectedRow = dtgvListBookedRoom.Rows[selectedRowIndex];
                     dtgvListBookedRoom.Rows.RemoveAt(selectedRowIndex);
@@ -344,15 +339,15 @@ namespace QLKS
                     }
                     if (flag)
                         lsvRoomEmpty.Items.Add(selectedRow.Cells[0].Value.ToString());
-                    foreach(ListViewItem item in lsvRoomBooked.Items)
+                    foreach (ListViewItem item in lsvRoomBooked.Items)
                     {
-                        if(item.Text== selectedRow.Cells[0].Value.ToString())
+                        if (item.Text == selectedRow.Cells[0].Value.ToString())
                         {
                             lsvRoomBooked.Items.Remove(item);
-                        }    
-                    }    
-                }    
-            }    
+                        }
+                    }
+                }
+            }
         }
         string ErrorMessage()
         {
@@ -373,15 +368,15 @@ namespace QLKS
                 return;
             }
             int count = 0;
-            List<string> roomNumber=new List<string>();
+            List<string> roomNumber = new List<string>();
             foreach (DataGridViewRow row in dtgvListBookedRoom.Rows)
             {
                 foreach (DataGridViewCell cell in row.Cells)
                 {
-                    if(cell.Value!=null)
+                    if (cell.Value != null)
                         count++;
                 }
-                if(row.Cells[0].Value!=null)
+                if (row.Cells[0].Value != null)
                     roomNumber.Add(row.Cells[0].Value.ToString());
             }
             if (count == 0)
@@ -390,27 +385,27 @@ namespace QLKS
                 return;
             }
 
-            BookingRoom booking=new BookingRoom();
+            BookingRoom booking = new BookingRoom();
             booking.BookingDate = DateTime.Today.Date;
             booking.ArrivedDate = dtpStart.Value;
             booking.ExpectedDate = dtpEnd.Value;
             booking.Employee = 1;
             Customer customer = db.GetTable<Customer>($"MADD={txtCustomerIdShow.Text}").FirstOrDefault();
-            if (customer==null)
+            if (customer == null)
             {
                 MessageBox.Show("Khách hàng không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            booking.Customer=customer.Id;
-            BookingRoom bookingRoom=db.AddRow<BookingRoom>(booking);
-            if(bookingRoom==null)
+            booking.Customer = customer.Id;
+            BookingRoom bookingRoom = db.AddRow<BookingRoom>(booking);
+            if (bookingRoom == null)
             {
                 MessageBox.Show("Thêm phiếu đặt phòng không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            foreach(string room in roomNumber)
+            foreach (string room in roomNumber)
             {
-                BookingRoomDetail roomDetail=new BookingRoomDetail();
+                BookingRoomDetail roomDetail = new BookingRoomDetail();
                 Room room1 = db.GetTable<Room>($"SOPHONG='{room}'").FirstOrDefault();
                 if (room1 == null || CheckRoomStatus(room1.Id, dtpStart.Value.Date, dtpEnd.Value.Date) != "Phòng trống")
                 {
@@ -422,23 +417,23 @@ namespace QLKS
                 roomDetail.Room = room1.Id;
                 db.UpdateRow<Room>(room1);
                 db.AddRow<BookingRoomDetail>(roomDetail);
-            }   
-            if(label1.Text=="PHIẾU NHẬN PHÒNG")
-            {                
-                ReceivingRoom receiving=new ReceivingRoom();
-                List<BookingRoomDetail> roomDetails=db.GetTable<BookingRoomDetail>($"MAPHIEUDATPHONG={bookingRoom.Id}").ToList();
+            }
+            if (label1.Text == "PHIẾU NHẬN PHÒNG")
+            {
+                ReceivingRoom receiving = new ReceivingRoom();
+                List<BookingRoomDetail> roomDetails = db.GetTable<BookingRoomDetail>($"MAPHIEUDATPHONG={bookingRoom.Id}").ToList();
                 {
-                    foreach(BookingRoomDetail roomDetail in roomDetails)
+                    foreach (BookingRoomDetail roomDetail in roomDetails)
                     {
                         foreach (Room room in db.GetTable<Room>())
                         {
-                            if(room.Id==roomDetail.Room)
+                            if (room.Id == roomDetail.Room)
                             {
                                 room.Status = "Đã nhận";
                                 db.UpdateRow<Room>(room);
-                            }    
+                            }
                         }
-                    }    
+                    }
                 }
                 receiving.BookingRoom = bookingRoom.Id;
                 receiving.ReceivingDate = dtpStart.Value.Date;

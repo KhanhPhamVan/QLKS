@@ -1,15 +1,7 @@
 ﻿using QLKS.Models;
-using QLKS.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Serialization;
 
 namespace QLKS.Forms
 {
@@ -52,7 +44,7 @@ namespace QLKS.Forms
 
         private void cboId_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RoomType roomType=db.GetTable<RoomType>(t=>t.Id==int.Parse(cboId.Text)).First();
+            RoomType roomType = db.GetTable<RoomType>(t => t.Id == int.Parse(cboId.Text)).First();
             txtName.Text = roomType.Name;
             txtMaxPeople.Text = roomType.MaxPeople.ToString();
             txtPrice.Text = roomType.Price.ToString();
@@ -65,7 +57,7 @@ namespace QLKS.Forms
                 MessageBox.Show("Vui lòng nhập vào thông tin để tìm kiếm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            RoomType roomType = db.GetTable<RoomType>(t=>t.Name==txtSearch.Text).FirstOrDefault();
+            RoomType roomType = db.GetTable<RoomType>(t => t.Name == txtSearch.Text).FirstOrDefault();
             if (roomType == null)
             {
                 MessageBox.Show("Không tìm thấy loại phòng này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -75,7 +67,7 @@ namespace QLKS.Forms
             txtName.Text = roomType.Name;
             txtMaxPeople.Text = roomType.MaxPeople.ToString();
             txtPrice.Text = roomType.Price.ToString();
-            cboId.Text=roomType.Id.ToString();
+            cboId.Text = roomType.Id.ToString();
         }
         string ErrorMessage()
         {

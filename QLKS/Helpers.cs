@@ -57,11 +57,11 @@ namespace QLKS
                     DateTimePicker dateTimePicker = (DateTimePicker)control1;
                     dateTimePicker.Value = DateTime.Now;
                 }
-                else if(control is DataGridView)
+                else if (control is DataGridView)
                 {
                     DataGridView dataGridView = (DataGridView)control1;
                     dataGridView.Rows.Clear();
-                }    
+                }
             }
         }
 

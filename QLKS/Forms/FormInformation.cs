@@ -2,12 +2,6 @@
 using QLKS.Models.Extensions;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QLKS.Forms
@@ -56,7 +50,8 @@ namespace QLKS.Forms
                         textBox2.Clear();
                         textBox5.Clear();
                         textBox9.Clear();
-                    } else
+                    }
+                    else
                     {
                         MessageBox.Show("Lỗi kết nối!", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }

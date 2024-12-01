@@ -1,14 +1,9 @@
 ﻿using QLKS.Models;
-using QLKS.Properties;
 using QLKS.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QLKS.Forms

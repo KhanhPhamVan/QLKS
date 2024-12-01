@@ -1,14 +1,8 @@
 ﻿using QLKS.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Globalization;
 
 namespace QLKS.Forms
 {
@@ -44,8 +38,8 @@ namespace QLKS.Forms
                 MessageBox.Show("Vui lòng nhập vào thông tin để tìm kiếm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            Customer customer=new Customer();
-            if (cboTypeSearch.SelectedIndex == 0) 
+            Customer customer = new Customer();
+            if (cboTypeSearch.SelectedIndex == 0)
                 customer = db.GetTable<Customer>(t => t.UniqueNumber.StartsWith(txtSearch.Text)).FirstOrDefault();
             else
                 customer = db.GetTable<Customer>(t => t.Phone.StartsWith(txtSearch.Text)).FirstOrDefault();
@@ -60,7 +54,7 @@ namespace QLKS.Forms
             txtPhoneNumber.Text = customer.Phone.ToString();
             cboGender.Text = customer.Gender.ToString();
             cboCountry.Text = customer.Country.ToString();
-            cboCustomerId.Text=customer.Id.ToString();
+            cboCustomerId.Text = customer.Id.ToString();
         }
         string ErrorMessage()
         {
@@ -88,11 +82,11 @@ namespace QLKS.Forms
             }
             Customer customer = new Customer();
             customer.Name = txtCustomerName.Text;
-            customer.DoB=dtpDoB.Value;
-            customer.Gender=cboGender.Text;
-            customer.Country=cboCountry.Text;
-            customer.Phone=txtPhoneNumber.Text;
-            customer.UniqueNumber=txtCustomerIdShow.Text;
+            customer.DoB = dtpDoB.Value;
+            customer.Gender = cboGender.Text;
+            customer.Country = cboCountry.Text;
+            customer.Phone = txtPhoneNumber.Text;
+            customer.UniqueNumber = txtCustomerIdShow.Text;
             var addedCustomer = db.AddRow(customer);
             if (addedCustomer.Id == 0)
             {
@@ -106,9 +100,9 @@ namespace QLKS.Forms
 
         private void dtgvCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex>=0)
+            if (e.RowIndex >= 0)
             {
-                DataGridViewRow row=dtgvCustomer.Rows[e.RowIndex];
+                DataGridViewRow row = dtgvCustomer.Rows[e.RowIndex];
                 txtCustomerName.Text = row.Cells["NameCustomer"].Value?.ToString();
                 txtPhoneNumber.Text = row.Cells["Phone"].Value?.ToString();
                 DateTime date = DateTime.Parse(row.Cells["DoB"].Value?.ToString());
@@ -116,8 +110,8 @@ namespace QLKS.Forms
                 cboCountry.Text = row.Cells["Country"].Value?.ToString();
                 cboGender.Text = row.Cells["Gender"].Value?.ToString();
                 txtCustomerIdShow.Text = row.Cells["UniqueNumber"].Value?.ToString();
-                cboCustomerId.Text= row.Cells["Id"].Value?.ToString();
-            }    
+                cboCustomerId.Text = row.Cells["Id"].Value?.ToString();
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -140,7 +134,7 @@ namespace QLKS.Forms
             customer.Country = cboCountry.Text;
             customer.Phone = txtPhoneNumber.Text;
             customer.UniqueNumber = txtCustomerIdShow.Text;
-            customer.Id =int.Parse(cboCustomerId.Text);
+            customer.Id = int.Parse(cboCustomerId.Text);
             if (!db.UpdateRow(customer))
             {
                 MessageBox.Show("Cập nhật khách hàng không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -173,7 +167,7 @@ namespace QLKS.Forms
             customer.Phone = txtPhoneNumber.Text;
             customer.UniqueNumber = txtCustomerIdShow.Text;
             customer.Id = int.Parse(cboCustomerId.Text);
-            if (db.DeleteRows<Customer>($"MAKH={customer.Id.ToString()}")==0)
+            if (db.DeleteRows<Customer>($"MAKH={customer.Id.ToString()}") == 0)
             {
                 MessageBox.Show("Xóa khách hàng không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -199,7 +193,7 @@ namespace QLKS.Forms
                 else if (control1 is DateTimePicker)
                 {
                     DateTimePicker dateTimePicker = (DateTimePicker)control1;
-                    dateTimePicker.Value=DateTime.Now;
+                    dateTimePicker.Value = DateTime.Now;
                 }
             }
         }
@@ -210,8 +204,8 @@ namespace QLKS.Forms
 
         private void cboCustomerId_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Customer customer=db.GetTable<Customer>(t=>t.Id==int.Parse(cboCustomerId.Text)).First();
-            txtCustomerName.Text= customer.Name;
+            Customer customer = db.GetTable<Customer>(t => t.Id == int.Parse(cboCustomerId.Text)).First();
+            txtCustomerName.Text = customer.Name;
             dtpDoB.Value = customer.DoB;
             cboGender.Text = customer.Gender;
             cboCountry.Text = customer.Country;

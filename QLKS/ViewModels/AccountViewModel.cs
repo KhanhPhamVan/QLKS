@@ -19,7 +19,8 @@ namespace QLKS.ViewModels
         public string Role { get; set; }
         public bool IsActive { get; set; }
 
-        public AccountViewModel(Account account, DbContext db) {
+        public AccountViewModel(Account account, DbContext db)
+        {
             this.account = account;
             employee = account.GetEmployee(db);
             Id = employee.Id;
@@ -30,9 +31,10 @@ namespace QLKS.ViewModels
             IsActive = account.IsActive;
         }
 
-        public static IEnumerable<AccountViewModel> GetAccounts(DbContext db, string whereCondition = "", params Type[] fromAddition) 
+        public static IEnumerable<AccountViewModel> GetAccounts(DbContext db, string whereCondition = "", params Type[] fromAddition)
         {
-            foreach (Account a in db.GetTable<Account>(whereCondition, fromAddition: fromAddition)) { 
+            foreach (Account a in db.GetTable<Account>(whereCondition, fromAddition: fromAddition))
+            {
                 yield return new AccountViewModel(a, db);
             }
         }

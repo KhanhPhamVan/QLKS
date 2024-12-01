@@ -2,7 +2,6 @@
 using QLKS.Models.Extensions;
 using QLKS.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -59,7 +58,8 @@ namespace QLKS.Forms
                 MessageBox.Show("Đổi mật khẩu thành công!", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 button5_Click(null, EventArgs.Empty);
 
-            } else
+            }
+            else
             {
                 MessageBox.Show("Đổi mật khẩu thất bại!", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -106,9 +106,11 @@ namespace QLKS.Forms
             if (empl == null || empl.Id == 0)
             {
                 return;
-            } else
+            }
+            else
             {
-                Account account = new Account() { 
+                Account account = new Account()
+                {
                     Employee = empl.Id,
                     CreatedAt = DateTime.Now,
                     IsActive = true,
@@ -122,7 +124,8 @@ namespace QLKS.Forms
                     dataGridView1.DataSource = AccountViewModel.GetAccounts(db).Where(x => !x.UniqueNumber.Equals(this.account.GetEmployee(db).UniqueNumber)).ToList();
                     button5_Click(null, EventArgs.Empty);
 
-                } else
+                }
+                else
                 {
                     MessageBox.Show("Thêm tài khoản thất bại!", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

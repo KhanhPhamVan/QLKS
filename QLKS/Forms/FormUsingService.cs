@@ -1,14 +1,8 @@
 ﻿using QLKS.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static QLKS.FormReservation;
 
 namespace QLKS.Forms
 {
@@ -22,11 +16,11 @@ namespace QLKS.Forms
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            if(cboTypeSearch.SelectedIndex==-1)
+            if (cboTypeSearch.SelectedIndex == -1)
             {
                 MessageBox.Show("Vui lòng chọn loại thông tin để tìm kiếm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
-            }    
+            }
             if (string.IsNullOrEmpty(txtSearch.Text))
             {
                 MessageBox.Show("Vui lòng nhập vào thông tin để tìm kiếm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -48,7 +42,7 @@ namespace QLKS.Forms
             txtPhoneNumber.Text = customer.Phone.ToString();
             cboGender.Text = customer.Gender.ToString();
             cboCountry.Text = customer.Country.ToString();
-            List<BookingRoom> bookings=db.GetTable<BookingRoom>(s=>s.Customer==customer.Id).ToList();
+            List<BookingRoom> bookings = db.GetTable<BookingRoom>(s => s.Customer == customer.Id).ToList();
             for (int i = bookings.Count - 1; i >= 0; i--)
             {
 
@@ -65,7 +59,7 @@ namespace QLKS.Forms
             foreach (BookingRoom booking in bookings)
             {
                 dtgvBooking.Rows.Add(booking.Id, booking.ArrivedDate.ToString("dd/MM/yyyy"), booking.ExpectedDate.ToString("dd/MM/yyyy"));
-            }         
+            }
         }
         bool isCompleted = false;
         private void FormUsingService_Load(object sender, EventArgs e)
@@ -79,18 +73,18 @@ namespace QLKS.Forms
 
         private void cboServiceName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cboServiceName.SelectedIndex != -1 && isCompleted)
+            if (cboServiceName.SelectedIndex != -1 && isCompleted)
             {
                 Service service = db.GetTable<Service>(s => s.Name == cboServiceName.Text).FirstOrDefault();
-                if (service!=null)
+                if (service != null)
                 {
                     txtPrice.Text = service.Price.ToString("#,0");
                 }
-                
-            }    
-            
+
+            }
+
         }
-        
+
 
         private void btnAddService_Click_1(object sender, EventArgs e)
         {
@@ -123,14 +117,14 @@ namespace QLKS.Forms
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {            
+        {
             if (dtgvBooking.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Vui lòng chọn phiếu đặt phòng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            if (dtgvListService.Rows.Count==0)
+            if (dtgvListService.Rows.Count == 0)
             {
                 MessageBox.Show("Vui lòng chọn dịch vụ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -140,7 +134,7 @@ namespace QLKS.Forms
             bookingService.TotalPrice = 0;
             bookingService.Employee = 1;
             bookingService.BookingDate = DateTime.Now;
-            if(MessageBox.Show("Tiến hành lập phiếu dịch vụ?","Thông báo",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
+            if (MessageBox.Show("Tiến hành lập phiếu dịch vụ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 if (dtgvBooking.SelectedRows[0].Cells[0].Value != null)
                 {
@@ -172,24 +166,24 @@ namespace QLKS.Forms
                 MessageBox.Show("Lập phiếu dịch vụ thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dtgvListService.Rows.Clear();
                 dtgvInvoiceService.Rows.Clear();
-            }    
-                    
+            }
+
         }
         public decimal TinhTienPhong(int maphieudat)
         {
             decimal tien = 0;
-            foreach(BookingRoomDetail detail in db.GetTable<BookingRoomDetail>(b=>b.BookingRoom==maphieudat))
+            foreach (BookingRoomDetail detail in db.GetTable<BookingRoomDetail>(b => b.BookingRoom == maphieudat))
             {
                 Room room = db.GetTable<Room>(r => r.Id == detail.Room).FirstOrDefault();
-                RoomType type = db.GetTable<RoomType>(t=>t.Id==room.RoomType).FirstOrDefault();
+                RoomType type = db.GetTable<RoomType>(t => t.Id == room.RoomType).FirstOrDefault();
                 tien += type.Price;
-            }    
+            }
             return tien;
         }
         public decimal TinhTienDichVu(int maphieudat)
         {
             decimal tien = 0;
-            List<BookingService> services=db.GetTable<BookingService>(b=>b.BookingRoom==maphieudat).ToList();
+            List<BookingService> services = db.GetTable<BookingService>(b => b.BookingRoom == maphieudat).ToList();
             foreach (BookingService service in services)
             {
                 tien += service.TotalPrice;
@@ -199,32 +193,32 @@ namespace QLKS.Forms
 
         private void dtgvBooking_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex>=0)
+            if (e.RowIndex >= 0)
             {
                 int maphieudat = int.Parse(dtgvBooking.Rows[e.RowIndex].Cells[0].Value.ToString());
-                txtMoney.Text=(TinhTienPhong(maphieudat)+TinhTienDichVu(maphieudat)).ToString("#,0");
+                txtMoney.Text = (TinhTienPhong(maphieudat) + TinhTienDichVu(maphieudat)).ToString("#,0");
                 dtgvInvoiceService.Rows.Clear();
                 dtgvBooking.Rows[e.RowIndex].Selected = true;
-                List<BookingService> bookingServices = db.GetTable<BookingService>(b=>b.BookingRoom== int.Parse(dtgvBooking.Rows[e.RowIndex].Cells[0].Value.ToString())).ToList();
-                foreach(BookingService service in bookingServices)
-                {                    
-                    dtgvInvoiceService.Rows.Add(service.Id,service.TotalPrice.ToString("#,0"));
+                List<BookingService> bookingServices = db.GetTable<BookingService>(b => b.BookingRoom == int.Parse(dtgvBooking.Rows[e.RowIndex].Cells[0].Value.ToString())).ToList();
+                foreach (BookingService service in bookingServices)
+                {
+                    dtgvInvoiceService.Rows.Add(service.Id, service.TotalPrice.ToString("#,0"));
                 }
                 dtgvInvoiceRoom.Rows.Clear();
                 List<BookingRoom> bookings = db.GetTable<BookingRoom>(b => b.Id == int.Parse(dtgvBooking.Rows[e.RowIndex].Cells[0].Value.ToString())).ToList();
-                List<Room> rooms=new List<Room>();
+                List<Room> rooms = new List<Room>();
                 foreach (BookingRoom room in bookings)
                 {
-                    foreach(BookingRoomDetail detail in db.GetTable<BookingRoomDetail>(d=>d.BookingRoom==room.Id))
+                    foreach (BookingRoomDetail detail in db.GetTable<BookingRoomDetail>(d => d.BookingRoom == room.Id))
                     {
                         rooms.Add(db.GetTable<Room>(r => r.Id == detail.Room).FirstOrDefault());
-                    }    
+                    }
                 }
-                foreach(Room room1 in rooms)
+                foreach (Room room1 in rooms)
                 {
                     RoomType type = db.GetTable<RoomType>(t => t.Id == room1.RoomType).FirstOrDefault();
                     dtgvInvoiceRoom.Rows.Add(room1.Name, type.Name, type.Price.ToString("#,0"));
-                }    
+                }
             }
         }
 
