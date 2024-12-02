@@ -18,7 +18,7 @@ namespace QLKS.ViewModels
         public string Status { get; set; }
         public string Type { get; set; }
         public int TypeId { get; set; }
-        public decimal Price { get; set; }
+        public string Price { get; set; }
         public int MaxPeople { get; set; }
 
         public RoomViewModel() { }
@@ -32,7 +32,7 @@ namespace QLKS.ViewModels
             Number = r.Name;
             Status = r.Status;
             Type = type.Name;
-            Price = type.Price;
+            Price = string.Format("{0:C0}",type.Price);
             MaxPeople = type.MaxPeople;
             TypeId = type.Id;
         }

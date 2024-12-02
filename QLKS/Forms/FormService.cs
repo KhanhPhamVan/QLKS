@@ -14,7 +14,10 @@ namespace QLKS.Forms
         static DbContext db = new DbContext(DbContext.ConnectionType.ConfigurationManager, "DefaultConnection");
         void LoadDataSource()
         {
-            dtgvService.DataSource = db.GetTable<Service>().ToList();
+            foreach (Service service in db.GetTable<Service>().ToList())
+            {
+                dtgvService.Rows.Add(service.Id, service.Name, string.Format("{0:C0}", service.Price));
+            }
         }
         void LoadRoomId()
         {
@@ -41,7 +44,7 @@ namespace QLKS.Forms
             }
 
             txtName.Text = service.Name;
-            txtPrice.Text = service.Price.ToString();
+            txtPrice.Text = string.Format("{0:C0}", service.Price);
             cboId.Text = service.Id.ToString();
         }
 
@@ -102,7 +105,7 @@ namespace QLKS.Forms
             {
                 Service service = db.GetTable<Service>(t => t.Id == int.Parse(cboId.Text)).First();
                 txtName.Text = service.Name;
-                txtPrice.Text = service.Price.ToString();
+                txtPrice.Text = string.Format("{0:C0}", service.Price);
                 cboId.Text = service.Id.ToString();
             }
 

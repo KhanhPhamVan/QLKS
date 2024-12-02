@@ -78,7 +78,7 @@ namespace QLKS.Forms
                 Service service = db.GetTable<Service>(s => s.Name == cboServiceName.Text).FirstOrDefault();
                 if (service != null)
                 {
-                    txtPrice.Text = service.Price.ToString("#,0");
+                    txtPrice.Text = string.Format("{0:C0}",service.Price);
                 }
 
             }
@@ -113,7 +113,7 @@ namespace QLKS.Forms
                     }
                 }
             }
-            dtgvListService.Rows.Add(cboServiceName.Text, nmQuantity.Value, double.Parse(txtPrice.Text).ToString("#,0"), $"{double.Parse(nmQuantity.Value.ToString()) * double.Parse(txtPrice.Text)}");
+            dtgvListService.Rows.Add(cboServiceName.Text, nmQuantity.Value, string.Format("{0:C0}",double.Parse(txtPrice.Text)), $"{double.Parse(nmQuantity.Value.ToString()) * double.Parse(txtPrice.Text)}");
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -196,13 +196,13 @@ namespace QLKS.Forms
             if (e.RowIndex >= 0)
             {
                 int maphieudat = int.Parse(dtgvBooking.Rows[e.RowIndex].Cells[0].Value.ToString());
-                txtMoney.Text = (TinhTienPhong(maphieudat) + TinhTienDichVu(maphieudat)).ToString("#,0");
+                txtMoney.Text = string.Format("{0:C0}", (TinhTienPhong(maphieudat) + TinhTienDichVu(maphieudat)));
                 dtgvInvoiceService.Rows.Clear();
                 dtgvBooking.Rows[e.RowIndex].Selected = true;
                 List<BookingService> bookingServices = db.GetTable<BookingService>(b => b.BookingRoom == int.Parse(dtgvBooking.Rows[e.RowIndex].Cells[0].Value.ToString())).ToList();
                 foreach (BookingService service in bookingServices)
                 {
-                    dtgvInvoiceService.Rows.Add(service.Id, service.TotalPrice.ToString("#,0"));
+                    dtgvInvoiceService.Rows.Add(service.Id, string.Format("{0:C0}", service.TotalPrice));
                 }
                 dtgvInvoiceRoom.Rows.Clear();
                 List<BookingRoom> bookings = db.GetTable<BookingRoom>(b => b.Id == int.Parse(dtgvBooking.Rows[e.RowIndex].Cells[0].Value.ToString())).ToList();
@@ -217,7 +217,7 @@ namespace QLKS.Forms
                 foreach (Room room1 in rooms)
                 {
                     RoomType type = db.GetTable<RoomType>(t => t.Id == room1.RoomType).FirstOrDefault();
-                    dtgvInvoiceRoom.Rows.Add(room1.Name, type.Name, type.Price.ToString("#,0"));
+                    dtgvInvoiceRoom.Rows.Add(room1.Name, type.Name, string.Format("{0:C0}", type.Price));
                 }
             }
         }

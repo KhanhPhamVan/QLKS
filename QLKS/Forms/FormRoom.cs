@@ -49,7 +49,7 @@ namespace QLKS.Forms
             cboTypeId.Text = room.TypeId.ToString();
             txtTypeName.Text = room.Type;
             txtMaxPeople.Text = room.MaxPeople.ToString();
-            txtPrice.Text = room.Price.ToString();
+            txtPrice.Text =string.Format("{0:C0}",room.Price);
             cboRoomId.Text = room.Id.ToString();
         }
         IEnumerable<RoomType> types = db.GetTable<RoomType>();
@@ -146,7 +146,7 @@ namespace QLKS.Forms
                 RoomType roomType = types.First(t => t.Id == int.Parse(cboTypeId.Text));
                 txtMaxPeople.Text = roomType.MaxPeople.ToString();
                 txtTypeName.Text = roomType.Name;
-                txtPrice.Text = roomType.Price.ToString();
+                txtPrice.Text = string.Format("{0:C0}", roomType.Price);
             }
         }
 
