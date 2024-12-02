@@ -1,18 +1,8 @@
 ﻿using QLKS.Forms;
-using QLKS.Properties;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Data.SqlClient;
 using QLKS.Models;
-using System.Reflection;
-using QLKS.ViewModels;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace QLKS
 {
@@ -143,7 +133,7 @@ namespace QLKS
             panel_Logo.BackColor = Color.FromArgb(39, 39, 58);
             currentButton = null;
             btn_CloseChildForm.Text = "";
-            btn_CloseChildForm.Image= ((System.Drawing.Image)(Properties.Resources.refresh));
+            btn_CloseChildForm.Image = ((System.Drawing.Image)(Properties.Resources.refresh));
             //btn_CloseChildForm.Visible = false;
         }
 

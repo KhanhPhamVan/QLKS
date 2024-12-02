@@ -2,12 +2,7 @@
 using QLKS.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QLKS.Forms
@@ -22,11 +17,11 @@ namespace QLKS.Forms
 
         private void button9_Click(object sender, EventArgs e)
         {
-            FormRoomType frmRoomType=new FormRoomType();
+            FormRoomType frmRoomType = new FormRoomType();
             frmRoomType.ShowDialog();
         }
         IEnumerable<RoomViewModel> View = RoomViewModel.GetRooms(db);
-        
+
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -38,11 +33,11 @@ namespace QLKS.Forms
             RoomViewModel room = null;
             foreach (RoomViewModel view in View)
             {
-                if(view.Number==txtSearch.Text)
+                if (view.Number == txtSearch.Text)
                 {
                     room = view;
                     break;
-                }    
+                }
             }
             if (room == null)
             {
@@ -53,7 +48,7 @@ namespace QLKS.Forms
             cboStatus.Text = room.Status;
             cboTypeId.Text = room.TypeId.ToString();
             txtTypeName.Text = room.Type;
-            txtMaxPeople.Text=room.MaxPeople.ToString();
+            txtMaxPeople.Text = room.MaxPeople.ToString();
             txtPrice.Text = room.Price.ToString();
             cboRoomId.Text = room.Id.ToString();
         }
@@ -62,7 +57,7 @@ namespace QLKS.Forms
         {
             LoadDataSource();
             List<string> list = new List<string>();
-            foreach(RoomType type in types)
+            foreach (RoomType type in types)
             {
                 list.Add(type.Id.ToString());
             }
@@ -88,17 +83,17 @@ namespace QLKS.Forms
         }
         private void dtgvRoom_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex>=0)
+            if (e.RowIndex >= 0)
             {
-                DataGridViewRow row=dtgvRoom.Rows[e.RowIndex];
+                DataGridViewRow row = dtgvRoom.Rows[e.RowIndex];
                 txtNumber.Text = row.Cells["Number"].Value?.ToString();
                 cboStatus.Text = row.Cells["Status"].Value?.ToString();
                 cboTypeId.Text = row.Cells["TypeId"].Value?.ToString();
                 txtTypeName.Text = row.Cells["Type"].Value?.ToString(); ;
                 txtMaxPeople.Text = row.Cells["MaxPeople"].Value?.ToString(); ;
                 txtPrice.Text = row.Cells["Price"].Value?.ToString();
-                cboRoomId.Text= row.Cells["Id"].Value?.ToString();
-            }    
+                cboRoomId.Text = row.Cells["Id"].Value?.ToString();
+            }
         }
         string ErrorMessage()
         {
@@ -130,10 +125,10 @@ namespace QLKS.Forms
                 return;
             }
             Room room = new Room();
-            room.Name=txtNumber.Text;
-            room.Status=cboStatus.Text;
-            room.RoomType =int.Parse(cboTypeId.Text);
-            if (db.AddRow(room)==null)
+            room.Name = txtNumber.Text;
+            room.Status = cboStatus.Text;
+            room.RoomType = int.Parse(cboTypeId.Text);
+            if (db.AddRow(room) == null)
             {
                 MessageBox.Show("Thêm phòng không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -146,7 +141,7 @@ namespace QLKS.Forms
 
         private void cboTypeId_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cboTypeId.SelectedIndex >= 0)
+            if (cboTypeId.SelectedIndex >= 0)
             {
                 RoomType roomType = types.First(t => t.Id == int.Parse(cboTypeId.Text));
                 txtMaxPeople.Text = roomType.MaxPeople.ToString();
@@ -168,17 +163,17 @@ namespace QLKS.Forms
                 MessageBox.Show(error, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            
+
             Room room = new Room();
             room.Name = txtNumber.Text;
             room.Status = cboStatus.Text;
             room.RoomType = int.Parse(cboTypeId.Text);
-            room.Id=int.Parse(cboRoomId.Text);
-            if(!db.UpdateRow(room))
+            room.Id = int.Parse(cboRoomId.Text);
+            if (!db.UpdateRow(room))
             {
                 MessageBox.Show("Cập nhật phòng không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
-            }    
+            }
             LoadDataSource();
             MessageBox.Show("Cập nhật phòng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Helpers.ClearControl(tableLayoutPanel6);
@@ -189,9 +184,9 @@ namespace QLKS.Forms
             RoomViewModel room = new RoomViewModel();
             foreach (RoomViewModel roomView in RoomViewModel.GetRooms(db))
             {
-                if(roomView.Id==int.Parse(cboRoomId.Text))
+                if (roomView.Id == int.Parse(cboRoomId.Text))
                 {
-                    room=roomView; break;
+                    room = roomView; break;
                 }
             }
             txtNumber.Text = room.Number;
@@ -239,11 +234,11 @@ namespace QLKS.Forms
             if (MessageBox.Show("Bạn có chắc muốn xóa phòng này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 return;
             Func<Room, bool> predicate = p => p.Id == int.Parse(cboRoomId.Text);
-            if(db.DeleteRows<Room>($"MAPHONG={cboRoomId.Text}") == 0)
+            if (db.DeleteRows<Room>($"MAPHONG={cboRoomId.Text}") == 0)
             {
                 MessageBox.Show("Xóa phòng không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
-            }    
+            }
             LoadDataSource();
             LoadRoomId();
             MessageBox.Show("Xóa phòng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

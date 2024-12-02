@@ -1,10 +1,6 @@
 ﻿using QLKS.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace QLKS.ViewModels
 {
@@ -16,12 +12,12 @@ namespace QLKS.ViewModels
         public Room Room { get => room; set => room = value; }
         public RoomType RoomType { get => roomType; set => roomType = value; }
         public int Id { get; set; }
-        public string Number {  get; set; }
-        public string Status {  get; set; }
+        public string Number { get; set; }
+        public string Status { get; set; }
         public int RoomTypeId { get; set; }
-        public string NameRoomType {  get; set; }
-        public decimal Price {  get; set; }
-        public int MaxPeople {  get; set; }
+        public string NameRoomType { get; set; }
+        public decimal Price { get; set; }
+        public int MaxPeople { get; set; }
 
         public ReservationRoomStatus()
         {
@@ -31,9 +27,9 @@ namespace QLKS.ViewModels
             Id = room.Id;
             Number = room.Name;
             Status = room.Status;
-            RoomTypeId=room.RoomType;
-            roomType=db.GetTable<RoomType>(t=>t.Id==RoomTypeId).First();
-            NameRoomType=roomType.Name;
+            RoomTypeId = room.RoomType;
+            roomType = db.GetTable<RoomType>(t => t.Id == RoomTypeId).First();
+            NameRoomType = roomType.Name;
             Price = roomType.Price;
             MaxPeople = roomType.MaxPeople;
         }

@@ -1,12 +1,6 @@
 ﻿using QLKS.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QLKS.Forms
@@ -24,8 +18,8 @@ namespace QLKS.Forms
 
         private void button9_Click(object sender, EventArgs e)
         {
-            FormAccount formAccount=new FormAccount(account);
-            formAccount.ShowDialog(); 
+            FormAccount formAccount = new FormAccount(account);
+            formAccount.ShowDialog();
         }
 
         private void FormStaff_Load(object sender, EventArgs e)
@@ -123,7 +117,8 @@ namespace QLKS.Forms
             {
                 MessageBox.Show("Thêm nhân viên thành công!", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dataGridView1.DataSource = db.GetTable<Employee>();
-            } else
+            }
+            else
             {
                 MessageBox.Show("Thêm nhân viên thất bại!", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -142,7 +137,8 @@ namespace QLKS.Forms
                 {
                     MessageBox.Show("Xoá thành công!", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     dataGridView1.DataSource = db.GetTable<Employee>();
-                } else
+                }
+                else
                 {
                     MessageBox.Show("Xoá thất bại!", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

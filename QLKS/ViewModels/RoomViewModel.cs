@@ -1,11 +1,6 @@
 ﻿using QLKS.Models;
 using QLKS.Models.Extensions;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace QLKS.ViewModels
@@ -22,7 +17,7 @@ namespace QLKS.ViewModels
         public string Number { get; set; }
         public string Status { get; set; }
         public string Type { get; set; }
-        public int TypeId {  get; set; }
+        public int TypeId { get; set; }
         public decimal Price { get; set; }
         public int MaxPeople { get; set; }
 

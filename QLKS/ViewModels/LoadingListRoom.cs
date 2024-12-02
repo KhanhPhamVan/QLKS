@@ -17,35 +17,35 @@ namespace QLKS.ViewModels
         public Room Room { get => room; set => room = value; }
         public BookingRoomDetail BookingRoomDetail { get => bookingRoomDetail; set => bookingRoomDetail = value; }
         public string Number { get; set; }
-        public string Status {  get; set; }
-        public string CustomerName {  get; set; }
+        public string Status { get; set; }
+        public string CustomerName { get; set; }
         public string ArrivedDate { get; set; }
         public string ExpectedDate { get; set; }
-        public int Id {  get; set; }
-        public int IdRoom {  get; set; }
-        
+        public int Id { get; set; }
+        public int IdRoom { get; set; }
 
-        public LoadingListRoom() 
-        { 
+
+        public LoadingListRoom()
+        {
         }
-        public LoadingListRoom(Room room, DbContext db,DateTime start, DateTime end)
+        public LoadingListRoom(Room room, DbContext db, DateTime start, DateTime end)
         {
             this.room = room;
-            string status=CheckRoomStatus(db,room.Id,start,end);
-            if(status=="Đã đặt")
+            string status = CheckRoomStatus(db, room.Id, start, end);
+            if (status == "Đã đặt")
             {
                 List<BookingRoomDetail> bookings = db.GetTable<BookingRoomDetail>(t => t.Room == room.Id).ToList();
-                foreach(BookingRoomDetail booking in bookings)
+                foreach (BookingRoomDetail booking in bookings)
                 {
                     BookingRoom booking1 = db.GetTable<BookingRoom>(p => p.Id == booking.BookingRoom).First();
                     if (!(booking1.ExpectedDate <= start.Date || booking1.ArrivedDate >= end.Date))
-                    {                        
+                    {
                         bookingRoomDetail = booking;
                         break;
                     }
                 }
             }
-            else if(status == "Đã nhận")
+            else if (status == "Đã nhận")
             {
                 List<BookingRoomDetail> bookings = db.GetTable<BookingRoomDetail>(t => t.Room == room.Id).ToList();
                 foreach (BookingRoomDetail booking in bookings)
@@ -60,7 +60,7 @@ namespace QLKS.ViewModels
                         break;
                     }
                 }
-            }    
+            }
             if (bookingRoomDetail != null)
             {
                 Id = bookingRoomDetail.BookingRoom;

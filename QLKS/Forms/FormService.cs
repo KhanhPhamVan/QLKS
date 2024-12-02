@@ -1,15 +1,7 @@
 ﻿using QLKS.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace QLKS.Forms
 {
@@ -83,7 +75,7 @@ namespace QLKS.Forms
                 MessageBox.Show("Dịch vụ đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            Service service= new Service();
+            Service service = new Service();
             service.Name = txtName.Text;
             service.Price = decimal.Parse(txtPrice.Text);
             if (db.AddRow(service) == null)
@@ -106,14 +98,14 @@ namespace QLKS.Forms
         }
         private void cboId_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cboId.SelectedIndex!=-1)
+            if (cboId.SelectedIndex != -1)
             {
                 Service service = db.GetTable<Service>(t => t.Id == int.Parse(cboId.Text)).First();
                 txtName.Text = service.Name;
                 txtPrice.Text = service.Price.ToString();
                 cboId.Text = service.Id.ToString();
-            }    
-            
+            }
+
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)

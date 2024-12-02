@@ -163,7 +163,7 @@ namespace QLKS
         string FromAddition(params Type[] fromAddition)
         {
             StringBuilder builder = new StringBuilder();
-            foreach (Type t  in fromAddition)
+            foreach (Type t in fromAddition)
             {
                 TableAttribute tableAttr = (TableAttribute)t.GetCustomAttribute(typeof(TableAttribute));
                 if (tableAttr == null) continue;
