@@ -174,8 +174,16 @@ namespace QLKS
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Logout = true;
-            Close();
+            if (MessageBox.Show("Bạn có chắc muốn đăng xuất?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Logout = true;
+                Close();
+            }
+        }
+
+        private void btn_Task7_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormInvoice(), sender);
         }
     }
 }

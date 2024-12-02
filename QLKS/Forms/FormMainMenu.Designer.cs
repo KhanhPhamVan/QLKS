@@ -43,6 +43,7 @@
             this.btn_CloseChildForm = new System.Windows.Forms.Button();
             this.lbl_Title = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.btn_Task7 = new System.Windows.Forms.Button();
             this.panel_SideBar.SuspendLayout();
             this.panel_TitleBar.SuspendLayout();
             this.SuspendLayout();
@@ -50,6 +51,7 @@
             // panel_SideBar
             // 
             this.panel_SideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.panel_SideBar.Controls.Add(this.btn_Task7);
             this.panel_SideBar.Controls.Add(this.button3);
             this.panel_SideBar.Controls.Add(this.btn_Task6);
             this.panel_SideBar.Controls.Add(this.button1);
@@ -262,7 +264,7 @@
             this.lbl_Title.ForeColor = System.Drawing.Color.White;
             this.lbl_Title.Location = new System.Drawing.Point(432, 25);
             this.lbl_Title.Name = "lbl_Title";
-            this.lbl_Title.Size = new System.Drawing.Size(277, 29);
+            this.lbl_Title.Size = new System.Drawing.Size(347, 36);
             this.lbl_Title.TabIndex = 0;
             this.lbl_Title.Text = "QUẢN LÝ KHÁCH SẠN";
             // 
@@ -275,6 +277,25 @@
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(1130, 721);
             this.panelMain.TabIndex = 2;
+            // 
+            // btn_Task7
+            // 
+            this.btn_Task7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Task7.FlatAppearance.BorderSize = 0;
+            this.btn_Task7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Task7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Task7.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btn_Task7.Image = ((System.Drawing.Image)(resources.GetObject("btn_Task7.Image")));
+            this.btn_Task7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Task7.Location = new System.Drawing.Point(0, 605);
+            this.btn_Task7.Name = "btn_Task7";
+            this.btn_Task7.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btn_Task7.Size = new System.Drawing.Size(220, 75);
+            this.btn_Task7.TabIndex = 9;
+            this.btn_Task7.Text = "   Hóa đơn";
+            this.btn_Task7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_Task7.UseVisualStyleBackColor = true;
+            this.btn_Task7.Click += new System.EventHandler(this.btn_Task7_Click);
             // 
             // FormMainMenu
             // 
@@ -312,5 +333,6 @@
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btn_Task6;
+        private System.Windows.Forms.Button btn_Task7;
     }
 }

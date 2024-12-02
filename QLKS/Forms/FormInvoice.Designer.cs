@@ -29,15 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInvoice));
             this.dataView = new System.Windows.Forms.DataGridView();
-            this.invoiceViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.invoiceDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalMoneyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invoiceViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.inHóaĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceViewModelBindingSource)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataView
@@ -46,8 +50,9 @@
             this.dataView.AllowUserToDeleteRows = false;
             this.dataView.AllowUserToOrderColumns = true;
             this.dataView.AutoGenerateColumns = false;
-            this.dataView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
@@ -57,73 +62,101 @@
             this.customerNameDataGridViewTextBoxColumn});
             this.dataView.DataSource = this.invoiceViewModelBindingSource;
             this.dataView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataView.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataView.Location = new System.Drawing.Point(0, 0);
+            this.dataView.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.dataView.MultiSelect = false;
             this.dataView.Name = "dataView";
             this.dataView.ReadOnly = true;
+            this.dataView.RowHeadersWidth = 51;
             this.dataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataView.Size = new System.Drawing.Size(800, 450);
+            this.dataView.Size = new System.Drawing.Size(1734, 1055);
             this.dataView.TabIndex = 0;
-            // 
-            // invoiceViewModelBindingSource
-            // 
-            this.invoiceViewModelBindingSource.DataSource = typeof(QLKS.ViewModels.InvoiceViewModel);
+            this.dataView.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataView_CellMouseDown);
             // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
             this.idDataGridViewTextBoxColumn.HeaderText = "Mã hóa đơn";
+            this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Width = 90;
+            this.idDataGridViewTextBoxColumn.Width = 153;
             // 
             // invoiceDateDataGridViewTextBoxColumn
             // 
             this.invoiceDateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.invoiceDateDataGridViewTextBoxColumn.DataPropertyName = "InvoiceDate";
             this.invoiceDateDataGridViewTextBoxColumn.HeaderText = "Ngày lập hóa đơn";
+            this.invoiceDateDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.invoiceDateDataGridViewTextBoxColumn.Name = "invoiceDateDataGridViewTextBoxColumn";
             this.invoiceDateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.invoiceDateDataGridViewTextBoxColumn.Width = 90;
+            this.invoiceDateDataGridViewTextBoxColumn.Width = 169;
             // 
             // totalMoneyDataGridViewTextBoxColumn
             // 
             this.totalMoneyDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.totalMoneyDataGridViewTextBoxColumn.DataPropertyName = "TotalMoney";
             this.totalMoneyDataGridViewTextBoxColumn.HeaderText = "Tổng tiền";
+            this.totalMoneyDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.totalMoneyDataGridViewTextBoxColumn.Name = "totalMoneyDataGridViewTextBoxColumn";
             this.totalMoneyDataGridViewTextBoxColumn.ReadOnly = true;
-            this.totalMoneyDataGridViewTextBoxColumn.Width = 71;
+            this.totalMoneyDataGridViewTextBoxColumn.Width = 128;
             // 
             // employeeNameDataGridViewTextBoxColumn
             // 
             this.employeeNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.employeeNameDataGridViewTextBoxColumn.DataPropertyName = "EmployeeName";
             this.employeeNameDataGridViewTextBoxColumn.HeaderText = "Nhân viên";
+            this.employeeNameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.employeeNameDataGridViewTextBoxColumn.Name = "employeeNameDataGridViewTextBoxColumn";
             this.employeeNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.employeeNameDataGridViewTextBoxColumn.Width = 75;
+            this.employeeNameDataGridViewTextBoxColumn.Width = 134;
             // 
             // customerNameDataGridViewTextBoxColumn
             // 
             this.customerNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.customerNameDataGridViewTextBoxColumn.DataPropertyName = "CustomerName";
             this.customerNameDataGridViewTextBoxColumn.HeaderText = "Khách hàng";
+            this.customerNameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.customerNameDataGridViewTextBoxColumn.Name = "customerNameDataGridViewTextBoxColumn";
             this.customerNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.customerNameDataGridViewTextBoxColumn.Width = 83;
+            this.customerNameDataGridViewTextBoxColumn.Width = 149;
+            // 
+            // invoiceViewModelBindingSource
+            // 
+            this.invoiceViewModelBindingSource.DataSource = typeof(QLKS.ViewModels.InvoiceViewModel);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.inHóaĐơnToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(215, 58);
+            // 
+            // inHóaĐơnToolStripMenuItem
+            // 
+            this.inHóaĐơnToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("inHóaĐơnToolStripMenuItem.Image")));
+            this.inHóaĐơnToolStripMenuItem.Name = "inHóaĐơnToolStripMenuItem";
+            this.inHóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(214, 26);
+            this.inHóaĐơnToolStripMenuItem.Text = "In hóa đơn";
+            this.inHóaĐơnToolStripMenuItem.Click += new System.EventHandler(this.inHóaĐơnToolStripMenuItem_Click);
             // 
             // FormInvoice
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1734, 1055);
             this.Controls.Add(this.dataView);
+            this.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.Name = "FormInvoice";
             this.Text = "Danh sách hóa đơn";
             ((System.ComponentModel.ISupportInitialize)(this.dataView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceViewModelBindingSource)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -137,5 +170,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn totalMoneyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn employeeNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem inHóaĐơnToolStripMenuItem;
     }
 }
