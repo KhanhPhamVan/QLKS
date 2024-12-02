@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCustomer));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -149,7 +149,7 @@
             this.cboTypeSearch.Items.AddRange(new object[] {
             "Mã định danh",
             "Số điện thoại"});
-            this.cboTypeSearch.Location = new System.Drawing.Point(3, 9);
+            this.cboTypeSearch.Location = new System.Drawing.Point(3, 4);
             this.cboTypeSearch.Name = "cboTypeSearch";
             this.cboTypeSearch.Size = new System.Drawing.Size(203, 33);
             this.cboTypeSearch.TabIndex = 0;
@@ -234,7 +234,7 @@
             this.cboCountry.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cboCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCountry.FormattingEnabled = true;
-            this.cboCountry.Location = new System.Drawing.Point(222, 178);
+            this.cboCountry.Location = new System.Drawing.Point(222, 173);
             this.cboCountry.Name = "cboCountry";
             this.cboCountry.Size = new System.Drawing.Size(203, 33);
             this.cboCountry.TabIndex = 0;
@@ -265,7 +265,7 @@
             this.cboCustomerId.AccessibleName = "";
             this.cboCustomerId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cboCustomerId.FormattingEnabled = true;
-            this.cboCustomerId.Location = new System.Drawing.Point(3, 38);
+            this.cboCustomerId.Location = new System.Drawing.Point(3, 33);
             this.cboCustomerId.Name = "cboCustomerId";
             this.cboCustomerId.Size = new System.Drawing.Size(203, 33);
             this.cboCustomerId.Sorted = true;
@@ -362,7 +362,7 @@
             this.cboGender.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cboGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboGender.FormattingEnabled = true;
-            this.cboGender.Location = new System.Drawing.Point(3, 248);
+            this.cboGender.Location = new System.Drawing.Point(3, 243);
             this.cboGender.Name = "cboGender";
             this.cboGender.Size = new System.Drawing.Size(203, 33);
             this.cboGender.TabIndex = 0;
@@ -414,6 +414,7 @@
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Hủy";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnDelete
             // 
@@ -430,6 +431,7 @@
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAdd
             // 
@@ -446,6 +448,7 @@
             this.btnAdd.TabIndex = 5;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnUpdate
             // 
@@ -462,6 +465,7 @@
             this.btnUpdate.TabIndex = 6;
             this.btnUpdate.Text = "Cập nhật";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // groupBox4
             // 
@@ -510,8 +514,8 @@
             // Id
             // 
             this.Id.DataPropertyName = "Id";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Id.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Id.DefaultCellStyle = dataGridViewCellStyle1;
             this.Id.HeaderText = "Mã khách hàng";
             this.Id.MinimumWidth = 6;
             this.Id.Name = "Id";
@@ -530,8 +534,8 @@
             // UniqueNumber
             // 
             this.UniqueNumber.DataPropertyName = "UniqueNumber";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.UniqueNumber.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.UniqueNumber.DefaultCellStyle = dataGridViewCellStyle2;
             this.UniqueNumber.HeaderText = "Mã định danh";
             this.UniqueNumber.MinimumWidth = 6;
             this.UniqueNumber.Name = "UniqueNumber";
@@ -541,8 +545,8 @@
             // Phone
             // 
             this.Phone.DataPropertyName = "Phone";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Phone.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Phone.DefaultCellStyle = dataGridViewCellStyle3;
             this.Phone.HeaderText = "Số điện thoại";
             this.Phone.MinimumWidth = 6;
             this.Phone.Name = "Phone";
@@ -552,8 +556,8 @@
             // DoB
             // 
             this.DoB.DataPropertyName = "DoB";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.DoB.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.DoB.DefaultCellStyle = dataGridViewCellStyle4;
             this.DoB.HeaderText = "Ngày sinh";
             this.DoB.MinimumWidth = 6;
             this.DoB.Name = "DoB";

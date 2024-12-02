@@ -2,6 +2,7 @@
 using QLKS.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -49,7 +50,7 @@ namespace QLKS.Forms
             cboTypeId.Text = room.TypeId.ToString();
             txtTypeName.Text = room.Type;
             txtMaxPeople.Text = room.MaxPeople.ToString();
-            txtPrice.Text =string.Format("{0:C0}",room.Price);
+            txtPrice.Text =room.Price.ToString();
             cboRoomId.Text = room.Id.ToString();
         }
         IEnumerable<RoomType> types = db.GetTable<RoomType>();
@@ -93,6 +94,7 @@ namespace QLKS.Forms
                 txtMaxPeople.Text = row.Cells["MaxPeople"].Value?.ToString(); ;
                 txtPrice.Text = row.Cells["Price"].Value?.ToString();
                 cboRoomId.Text = row.Cells["Id"].Value?.ToString();
+                txtPrice.Text = decimal.Parse(txtPrice.Text, NumberStyles.Currency, CultureInfo.CurrentCulture).ToString();
             }
         }
         string ErrorMessage()
@@ -114,6 +116,11 @@ namespace QLKS.Forms
         private void btnAdd_Click(object sender, EventArgs e)
         {
             string error = ErrorMessage();
+            if(cboStatus.SelectedIndex!=0)
+            {
+                MessageBox.Show("Trạng thái phòng khi thêm chỉ là phòng trống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }    
             if (error != null)
             {
                 MessageBox.Show(error, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -249,6 +256,7 @@ namespace QLKS.Forms
         {
             ClearControl(groupBox2);
             ClearControl(groupBox1);
+            ClearControl(tableLayoutPanel6);
         }
     }
 }

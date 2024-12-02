@@ -1,5 +1,6 @@
 ﻿using QLKS.Models;
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -14,7 +15,10 @@ namespace QLKS.Forms
         DbContext db = new DbContext(DbContext.ConnectionType.ConfigurationManager, "DefaultConnection");
         void LoadDataSource()
         {
-            dtgvRoomType.DataSource = db.GetTable<RoomType>().ToList();
+            foreach(RoomType roomType in db.GetTable<RoomType>().ToList())
+            {
+                dtgvRoomType.Rows.Add(roomType.Id,roomType.Name,string.Format("{0:C0}",roomType.Price),roomType.MaxPeople);
+            }    
         }
         void LoadRoomId()
         {
@@ -47,7 +51,7 @@ namespace QLKS.Forms
             RoomType roomType = db.GetTable<RoomType>(t => t.Id == int.Parse(cboId.Text)).First();
             txtName.Text = roomType.Name;
             txtMaxPeople.Text = roomType.MaxPeople.ToString();
-            txtPrice.Text = roomType.Price.ToString();
+            txtPrice.Text = string.Format("{0:C0}", roomType.Price);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -66,7 +70,7 @@ namespace QLKS.Forms
 
             txtName.Text = roomType.Name;
             txtMaxPeople.Text = roomType.MaxPeople.ToString();
-            txtPrice.Text = roomType.Price.ToString();
+            txtPrice.Text = string.Format("{0:C0}", roomType.Price);
             cboId.Text = roomType.Id.ToString();
         }
         string ErrorMessage()
@@ -95,8 +99,8 @@ namespace QLKS.Forms
             }
             RoomType room = new RoomType();
             room.Name = txtName.Text;
-            room.Price = decimal.Parse(txtPrice.Text);
-            room.MaxPeople = int.Parse(txtMaxPeople.Text);
+            room.Price = decimal.Parse(txtPrice.Text, NumberStyles.Currency, CultureInfo.CurrentCulture);
+            room.MaxPeople = int.Parse(txtMaxPeople.Text, NumberStyles.Currency, CultureInfo.CurrentCulture);
             if (db.AddRow(room) == null)
             {
                 MessageBox.Show("Thêm loại phòng không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -123,7 +127,7 @@ namespace QLKS.Forms
 
             RoomType room = new RoomType();
             room.Name = txtName.Text;
-            room.Price = decimal.Parse(txtPrice.Text);
+            room.Price = decimal.Parse(txtPrice.Text, NumberStyles.Currency, CultureInfo.CurrentCulture);
             room.MaxPeople = int.Parse(txtMaxPeople.Text);
             room.Id = int.Parse(cboId.Text);
             if (!db.UpdateRow(room))
