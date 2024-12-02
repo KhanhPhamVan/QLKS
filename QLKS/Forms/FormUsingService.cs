@@ -132,7 +132,7 @@ namespace QLKS.Forms
 
             BookingService bookingService = new BookingService();
             bookingService.TotalPrice = 0;
-            bookingService.Employee = 1;
+            bookingService.Employee = FormLogin.account.Employee;
             bookingService.BookingDate = DateTime.Now;
             if (MessageBox.Show("Tiến hành lập phiếu dịch vụ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -275,7 +275,7 @@ namespace QLKS.Forms
                 invoice.RoomPrice = TinhTienPhong(maphieudat);
                 invoice.ServicePrice = TinhTienDichVu(maphieudat);
                 invoice.TotalPrice = invoice.RoomPrice + invoice.ServicePrice;
-                invoice.Employee = 1;
+                invoice.Employee = FormLogin.account.Employee;
                 BookingRoomDetail detail = db.GetTable<BookingRoomDetail>(x => x.BookingRoom == maphieudat).First();
                 detail.CheckoutDate = DateTime.Now;
                 db.AddRow<Invoice>(invoice);

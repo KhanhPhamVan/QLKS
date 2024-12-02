@@ -4,6 +4,7 @@ using QLKS.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace QLKS
@@ -388,8 +389,9 @@ namespace QLKS
             BookingRoom booking = new BookingRoom();
             booking.BookingDate = DateTime.Today.Date;
             booking.ArrivedDate = dtpStart.Value;
-            booking.ExpectedDate = dtpEnd.Value;
-            booking.Employee = 1;
+            booking.ExpectedDate = dtpEnd.Value;   
+            FormLogin formLogin = new FormLogin();
+            booking.Employee = FormLogin.account.Employee;
             Customer customer = db.GetTable<Customer>($"MADD={txtCustomerIdShow.Text}").FirstOrDefault();
             if (customer == null)
             {
@@ -437,7 +439,7 @@ namespace QLKS
                 }
                 receiving.BookingRoom = bookingRoom.Id;
                 receiving.ReceivingDate = dtpStart.Value.Date;
-                receiving.Employee = 1;
+                receiving.Employee = FormLogin.account.Employee;
                 db.AddRow<ReceivingRoom>(receiving);
                 MessageBox.Show("Nhận phòng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;

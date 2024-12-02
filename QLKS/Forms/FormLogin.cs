@@ -9,7 +9,7 @@ namespace QLKS.Forms
     {
         static DbContext db = new DbContext(DbContext.ConnectionType.ConfigurationManager, "DefaultConnection");
 
-        Account account;
+        public static Account account;
 
         public Account Account => account;
 
