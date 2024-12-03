@@ -10,10 +10,13 @@ namespace QLKS.Forms
 {
     public partial class FormRoom : Form
     {
-        static DbContext db = new DbContext(DbContext.ConnectionType.ConfigurationManager, "DefaultConnection");
-        public FormRoom()
+        static DbContext db = new DbContext(DbContext.ConnectionType.ConfigurationManager, "DefaultConnection"); 
+        Account account;
+
+        public FormRoom(Account account)
         {
             InitializeComponent();
+            this.account = account;
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -56,6 +59,11 @@ namespace QLKS.Forms
         IEnumerable<RoomType> types = db.GetTable<RoomType>();
         private void FormRoom_Load(object sender, EventArgs e)
         {
+            if (account.Role != "Quản trị viên")
+            {
+                groupBox3.Visible = false;
+                groupBox4.Visible = false;
+            }
             LoadDataSource();
             List<string> list = new List<string>();
             foreach (RoomType type in types)

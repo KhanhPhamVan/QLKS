@@ -139,7 +139,7 @@ namespace QLKS
 
         private void btn_Task3_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormRoom(), sender);
+            OpenChildForm(new FormRoom(account), sender);
         }
 
         private void btn_Task1_Click_1(object sender, EventArgs e)
@@ -149,7 +149,7 @@ namespace QLKS
 
         private void btn_Task4_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormService(), sender);
+            OpenChildForm(new FormService(account), sender);
         }
 
         private void button1_Click(object sender, EventArgs e)

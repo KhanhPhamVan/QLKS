@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace QLKS.Forms
@@ -78,7 +79,7 @@ namespace QLKS.Forms
                 Service service = db.GetTable<Service>(s => s.Name == cboServiceName.Text).FirstOrDefault();
                 if (service != null)
                 {
-                    txtPrice.Text = string.Format("{0:C0}",service.Price);
+                    txtPrice.Text = ((int)service.Price).ToString();
                 }
             }
         }
@@ -110,7 +111,7 @@ namespace QLKS.Forms
                     }
                 }
             }
-            dtgvListService.Rows.Add(cboServiceName.Text, nmQuantity.Value, string.Format("{0:C0}",double.Parse(txtPrice.Text)), $"{double.Parse(nmQuantity.Value.ToString()) * double.Parse(txtPrice.Text)}");
+            dtgvListService.Rows.Add(cboServiceName.Text, nmQuantity.Value, txtPrice.Text, $"{double.Parse(nmQuantity.Value.ToString()) * double.Parse(txtPrice.Text)}");
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -155,7 +156,8 @@ namespace QLKS.Forms
                                 MessageBox.Show($"Thêm dịch vụ {service.Name} không thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 return;
                             }
-                            bookingService.TotalPrice += service.Price * detail.Quantity;
+                            string result = Regex.Match(service.Price.ToString(), "^\\d+").Value;
+                            bookingService.TotalPrice += int.Parse(result) * detail.Quantity;
                             db.UpdateRow<BookingService>(bookingService);
                         }
                     }
@@ -176,7 +178,7 @@ namespace QLKS.Forms
                 db.UpdateRow<BookingRoomDetail>(detail);
                 Room room = db.GetTable<Room>(r => r.Id == detail.Room).FirstOrDefault();
                 RoomType type = db.GetTable<RoomType>(t => t.Id == room.RoomType).FirstOrDefault();                
-                tien += (type.Price * (booking.ArrivedDate - detail.CheckoutDate).Days);
+                tien += (type.Price * ((detail.CheckoutDate - booking.ArrivedDate).Days + 1));
             }
             return tien;
         }
