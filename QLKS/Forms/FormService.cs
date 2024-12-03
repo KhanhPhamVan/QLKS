@@ -59,9 +59,10 @@ namespace QLKS.Forms
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dtgvService.Rows[e.RowIndex];
-                txtName.Text = row.Cells["ServiceName"].Value?.ToString();
-                txtPrice.Text = row.Cells["Price"].Value?.ToString();
-                cboId.Text = row.Cells["Id"].Value?.ToString();
+                Service s = db.GetTable<Service>(t => t.Id.ToString() == row.Cells["Id"].Value.ToString()).First();
+                txtName.Text = s.Name;
+                txtPrice.Text = s.Price.ToString();
+                cboId.Text = s.Id.ToString();
             }
         }
 
@@ -103,10 +104,10 @@ namespace QLKS.Forms
         {
             if (cboId.SelectedIndex != -1)
             {
-                Service service = db.GetTable<Service>(t => t.Id == int.Parse(cboId.Text)).First();
-                txtName.Text = service.Name;
-                txtPrice.Text = string.Format("{0:C0}", service.Price);
-                cboId.Text = service.Id.ToString();
+                Service s = db.GetTable<Service>(t => t.Id == int.Parse(cboId.Text)).First();
+                txtName.Text = s.Name;
+                txtPrice.Text = ((int)s.Price).ToString();
+                cboId.Text = s.Id.ToString();
             }
 
         }

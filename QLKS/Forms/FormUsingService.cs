@@ -80,11 +80,8 @@ namespace QLKS.Forms
                 {
                     txtPrice.Text = string.Format("{0:C0}",service.Price);
                 }
-
             }
-
         }
-
 
         private void btnAddService_Click_1(object sender, EventArgs e)
         {
@@ -172,11 +169,14 @@ namespace QLKS.Forms
         public decimal TinhTienPhong(int maphieudat)
         {
             decimal tien = 0;
+            BookingRoom booking = db.GetTable<BookingRoom>(x => x.Id == maphieudat).First();
             foreach (BookingRoomDetail detail in db.GetTable<BookingRoomDetail>(b => b.BookingRoom == maphieudat))
             {
+                detail.CheckoutDate = DateTime.Now;
+                db.UpdateRow<BookingRoomDetail>(detail);
                 Room room = db.GetTable<Room>(r => r.Id == detail.Room).FirstOrDefault();
-                RoomType type = db.GetTable<RoomType>(t => t.Id == room.RoomType).FirstOrDefault();
-                tien += type.Price;
+                RoomType type = db.GetTable<RoomType>(t => t.Id == room.RoomType).FirstOrDefault();                
+                tien += (type.Price * (booking.ArrivedDate - detail.CheckoutDate).Days);
             }
             return tien;
         }
@@ -276,10 +276,7 @@ namespace QLKS.Forms
                 invoice.ServicePrice = TinhTienDichVu(maphieudat);
                 invoice.TotalPrice = invoice.RoomPrice + invoice.ServicePrice;
                 invoice.Employee = FormLogin.account.Employee;
-                BookingRoomDetail detail = db.GetTable<BookingRoomDetail>(x => x.BookingRoom == maphieudat).First();
-                detail.CheckoutDate = DateTime.Now;
                 db.AddRow<Invoice>(invoice);
-                db.UpdateRow(detail);
                 if (db == null)
                 {
                     MessageBox.Show("Thêm hóa đơn không thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

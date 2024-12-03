@@ -361,6 +361,12 @@ namespace QLKS.DataSets {
             
             private global::System.Data.DataColumn columnMADD;
             
+            private global::System.Data.DataColumn columnTIENDICHVU;
+            
+            private global::System.Data.DataColumn columnTIENPHONG;
+            
+            private global::System.Data.DataColumn columnTONGTIEN;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public InformationDataTable() {
@@ -444,6 +450,30 @@ namespace QLKS.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn TIENDICHVUColumn {
+                get {
+                    return this.columnTIENDICHVU;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn TIENPHONGColumn {
+                get {
+                    return this.columnTIENPHONG;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn TONGTIENColumn {
+                get {
+                    return this.columnTONGTIEN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -479,7 +509,7 @@ namespace QLKS.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public InformationRow AddInformationRow(string MAHD, string NGAYLAP, string MAPHIEUDATPHONG, string TENKH, string TENNV, string MADD) {
+            public InformationRow AddInformationRow(string MAHD, string NGAYLAP, string MAPHIEUDATPHONG, string TENKH, string TENNV, string MADD, string TIENDICHVU, string TIENPHONG, string TONGTIEN) {
                 InformationRow rowInformationRow = ((InformationRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         MAHD,
@@ -487,7 +517,10 @@ namespace QLKS.DataSets {
                         MAPHIEUDATPHONG,
                         TENKH,
                         TENNV,
-                        MADD};
+                        MADD,
+                        TIENDICHVU,
+                        TIENPHONG,
+                        TONGTIEN};
                 rowInformationRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowInformationRow);
                 return rowInformationRow;
@@ -516,6 +549,9 @@ namespace QLKS.DataSets {
                 this.columnTENKH = base.Columns["TENKH"];
                 this.columnTENNV = base.Columns["TENNV"];
                 this.columnMADD = base.Columns["MADD"];
+                this.columnTIENDICHVU = base.Columns["TIENDICHVU"];
+                this.columnTIENPHONG = base.Columns["TIENPHONG"];
+                this.columnTONGTIEN = base.Columns["TONGTIEN"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -533,6 +569,12 @@ namespace QLKS.DataSets {
                 base.Columns.Add(this.columnTENNV);
                 this.columnMADD = new global::System.Data.DataColumn("MADD", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMADD);
+                this.columnTIENDICHVU = new global::System.Data.DataColumn("TIENDICHVU", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTIENDICHVU);
+                this.columnTIENPHONG = new global::System.Data.DataColumn("TIENPHONG", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTIENPHONG);
+                this.columnTONGTIEN = new global::System.Data.DataColumn("TONGTIEN", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTONGTIEN);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1363,6 +1405,54 @@ namespace QLKS.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string TIENDICHVU {
+                get {
+                    try {
+                        return ((string)(this[this.tableInformation.TIENDICHVUColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TIENDICHVU\' in table \'Information\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableInformation.TIENDICHVUColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string TIENPHONG {
+                get {
+                    try {
+                        return ((string)(this[this.tableInformation.TIENPHONGColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TIENPHONG\' in table \'Information\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableInformation.TIENPHONGColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string TONGTIEN {
+                get {
+                    try {
+                        return ((string)(this[this.tableInformation.TONGTIENColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TONGTIEN\' in table \'Information\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableInformation.TONGTIENColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsMAHDNull() {
                 return this.IsNull(this.tableInformation.MAHDColumn);
             }
@@ -1431,6 +1521,42 @@ namespace QLKS.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetMADDNull() {
                 this[this.tableInformation.MADDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsTIENDICHVUNull() {
+                return this.IsNull(this.tableInformation.TIENDICHVUColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetTIENDICHVUNull() {
+                this[this.tableInformation.TIENDICHVUColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsTIENPHONGNull() {
+                return this.IsNull(this.tableInformation.TIENPHONGColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetTIENPHONGNull() {
+                this[this.tableInformation.TIENPHONGColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsTONGTIENNull() {
+                return this.IsNull(this.tableInformation.TONGTIENColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetTONGTIENNull() {
+                this[this.tableInformation.TONGTIENColumn] = global::System.Convert.DBNull;
             }
         }
         

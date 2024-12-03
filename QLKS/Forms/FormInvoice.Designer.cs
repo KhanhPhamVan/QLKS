@@ -31,17 +31,18 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInvoice));
             this.dataView = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.inHóaĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.invoiceViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.invoiceDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalMoneyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.invoiceViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.inHóaĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CustomerPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invoiceViewModelBindingSource)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceViewModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataView
@@ -59,7 +60,8 @@
             this.invoiceDateDataGridViewTextBoxColumn,
             this.totalMoneyDataGridViewTextBoxColumn,
             this.employeeNameDataGridViewTextBoxColumn,
-            this.customerNameDataGridViewTextBoxColumn});
+            this.customerNameDataGridViewTextBoxColumn,
+            this.CustomerPhone});
             this.dataView.DataSource = this.invoiceViewModelBindingSource;
             this.dataView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataView.GridColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -74,6 +76,26 @@
             this.dataView.TabIndex = 0;
             this.dataView.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataView_CellMouseDown);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.inHóaĐơnToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(176, 36);
+            // 
+            // inHóaĐơnToolStripMenuItem
+            // 
+            this.inHóaĐơnToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("inHóaĐơnToolStripMenuItem.Image")));
+            this.inHóaĐơnToolStripMenuItem.Name = "inHóaĐơnToolStripMenuItem";
+            this.inHóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(175, 32);
+            this.inHóaĐơnToolStripMenuItem.Text = "In hóa đơn";
+            this.inHóaĐơnToolStripMenuItem.Click += new System.EventHandler(this.inHóaĐơnToolStripMenuItem_Click);
+            // 
+            // invoiceViewModelBindingSource
+            // 
+            this.invoiceViewModelBindingSource.DataSource = typeof(QLKS.ViewModels.InvoiceViewModel);
+            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -82,7 +104,7 @@
             this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Width = 153;
+            this.idDataGridViewTextBoxColumn.Width = 203;
             // 
             // invoiceDateDataGridViewTextBoxColumn
             // 
@@ -92,7 +114,7 @@
             this.invoiceDateDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.invoiceDateDataGridViewTextBoxColumn.Name = "invoiceDateDataGridViewTextBoxColumn";
             this.invoiceDateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.invoiceDateDataGridViewTextBoxColumn.Width = 169;
+            this.invoiceDateDataGridViewTextBoxColumn.Width = 206;
             // 
             // totalMoneyDataGridViewTextBoxColumn
             // 
@@ -102,7 +124,7 @@
             this.totalMoneyDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.totalMoneyDataGridViewTextBoxColumn.Name = "totalMoneyDataGridViewTextBoxColumn";
             this.totalMoneyDataGridViewTextBoxColumn.ReadOnly = true;
-            this.totalMoneyDataGridViewTextBoxColumn.Width = 128;
+            this.totalMoneyDataGridViewTextBoxColumn.Width = 157;
             // 
             // employeeNameDataGridViewTextBoxColumn
             // 
@@ -112,7 +134,7 @@
             this.employeeNameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.employeeNameDataGridViewTextBoxColumn.Name = "employeeNameDataGridViewTextBoxColumn";
             this.employeeNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.employeeNameDataGridViewTextBoxColumn.Width = 134;
+            this.employeeNameDataGridViewTextBoxColumn.Width = 164;
             // 
             // customerNameDataGridViewTextBoxColumn
             // 
@@ -122,31 +144,19 @@
             this.customerNameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.customerNameDataGridViewTextBoxColumn.Name = "customerNameDataGridViewTextBoxColumn";
             this.customerNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.customerNameDataGridViewTextBoxColumn.Width = 149;
+            this.customerNameDataGridViewTextBoxColumn.Width = 181;
             // 
-            // invoiceViewModelBindingSource
+            // CustomerPhone
             // 
-            this.invoiceViewModelBindingSource.DataSource = typeof(QLKS.ViewModels.InvoiceViewModel);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.inHóaĐơnToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(215, 58);
-            // 
-            // inHóaĐơnToolStripMenuItem
-            // 
-            this.inHóaĐơnToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("inHóaĐơnToolStripMenuItem.Image")));
-            this.inHóaĐơnToolStripMenuItem.Name = "inHóaĐơnToolStripMenuItem";
-            this.inHóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(214, 26);
-            this.inHóaĐơnToolStripMenuItem.Text = "In hóa đơn";
-            this.inHóaĐơnToolStripMenuItem.Click += new System.EventHandler(this.inHóaĐơnToolStripMenuItem_Click);
+            this.CustomerPhone.DataPropertyName = "CustomerPhone";
+            this.CustomerPhone.HeaderText = "SĐTKH";
+            this.CustomerPhone.MinimumWidth = 8;
+            this.CustomerPhone.Name = "CustomerPhone";
+            this.CustomerPhone.ReadOnly = true;
             // 
             // FormInvoice
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 38F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1734, 1055);
             this.Controls.Add(this.dataView);
@@ -155,8 +165,8 @@
             this.Name = "FormInvoice";
             this.Text = "Danh sách hóa đơn";
             ((System.ComponentModel.ISupportInitialize)(this.dataView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invoiceViewModelBindingSource)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceViewModelBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -165,12 +175,13 @@
 
         private System.Windows.Forms.DataGridView dataView;
         private System.Windows.Forms.BindingSource invoiceViewModelBindingSource;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem inHóaĐơnToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn invoiceDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalMoneyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn employeeNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem inHóaĐơnToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerPhone;
     }
 }
