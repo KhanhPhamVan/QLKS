@@ -229,7 +229,7 @@
             this.cboId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cboId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboId.FormattingEnabled = true;
-            this.cboId.Location = new System.Drawing.Point(3, 33);
+            this.cboId.Location = new System.Drawing.Point(3, 36);
             this.cboId.Name = "cboId";
             this.cboId.Size = new System.Drawing.Size(222, 38);
             this.cboId.TabIndex = 4;

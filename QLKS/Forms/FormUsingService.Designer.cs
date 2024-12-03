@@ -281,7 +281,7 @@
             this.cboCountry.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cboCountry.Enabled = false;
             this.cboCountry.FormattingEnabled = true;
-            this.cboCountry.Location = new System.Drawing.Point(234, 176);
+            this.cboCountry.Location = new System.Drawing.Point(234, 173);
             this.cboCountry.Name = "cboCountry";
             this.cboCountry.Size = new System.Drawing.Size(216, 38);
             this.cboCountry.TabIndex = 0;
@@ -389,7 +389,7 @@
             this.cboGender.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cboGender.Enabled = false;
             this.cboGender.FormattingEnabled = true;
-            this.cboGender.Location = new System.Drawing.Point(3, 176);
+            this.cboGender.Location = new System.Drawing.Point(3, 173);
             this.cboGender.Name = "cboGender";
             this.cboGender.Size = new System.Drawing.Size(215, 38);
             this.cboGender.TabIndex = 0;
@@ -507,7 +507,7 @@
             this.cboTypeSearch.Items.AddRange(new object[] {
             "Số điện thoại",
             "Mã định danh"});
-            this.cboTypeSearch.Location = new System.Drawing.Point(3, 5);
+            this.cboTypeSearch.Location = new System.Drawing.Point(3, 3);
             this.cboTypeSearch.Name = "cboTypeSearch";
             this.cboTypeSearch.Size = new System.Drawing.Size(215, 38);
             this.cboTypeSearch.TabIndex = 0;
@@ -625,7 +625,7 @@
             this.cboServiceName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cboServiceName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboServiceName.FormattingEnabled = true;
-            this.cboServiceName.Location = new System.Drawing.Point(3, 56);
+            this.cboServiceName.Location = new System.Drawing.Point(3, 53);
             this.cboServiceName.Name = "cboServiceName";
             this.cboServiceName.Size = new System.Drawing.Size(293, 38);
             this.cboServiceName.TabIndex = 0;

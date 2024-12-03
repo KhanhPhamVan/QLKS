@@ -1,15 +1,20 @@
 ﻿using QLKS.Models;
 using System;
 using System.Linq;
+using System.Security.Principal;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace QLKS.Forms
 {
     public partial class FormService : Form
     {
-        public FormService()
+        Account account;
+
+        public FormService(Account account)
         {
             InitializeComponent();
+            this.account = account;
         }
         static DbContext db = new DbContext(DbContext.ConnectionType.ConfigurationManager, "DefaultConnection");
         void LoadDataSource()
@@ -50,6 +55,10 @@ namespace QLKS.Forms
 
         private void FormService_Load(object sender, EventArgs e)
         {
+            if (account.Role != "Quản trị viên")
+            {
+                groupBox3.Visible = false;
+            }
             LoadDataSource();
             LoadRoomId();
         }

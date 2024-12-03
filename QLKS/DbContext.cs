@@ -299,7 +299,7 @@ namespace QLKS
                 if (value == null || value.ToString().Length == 0)
                     continue;
                 Type pType = property.PropertyType;
-                if (pType == typeof(int) || pType == typeof(float) || pType == typeof(double))
+                if (pType == typeof(int))
                     values.Add(value);
                 else if (pType == typeof(DateTime))
                 {
@@ -316,6 +316,8 @@ namespace QLKS
                     else
                         values.Add(0);
                 }
+                else if (pType == typeof(decimal) || pType == typeof(float) || pType == typeof(double))
+                    values.Add(((decimal)value).ToString(System.Globalization.CultureInfo.InvariantCulture));
                 else
                     values.Add($"N'{value}'");
                 keys.Add(columnAttr.Name);
@@ -375,7 +377,7 @@ namespace QLKS
                 object fValue = null;
                 if (columnAttr.IsPrimaryKey)
                 {
-                    if (pType == typeof(int) || pType == typeof(float) || pType == typeof(double))
+                    if (pType == typeof(int))
                         fValue = value;
                     else if (pType == typeof(DateTime))
                     {
@@ -387,13 +389,15 @@ namespace QLKS
                     }
                     else if (pType == typeof(bool))
                         fValue = (bool)value ? 1 : 0;
+                    else if (pType == typeof(decimal) || pType == typeof(float) || pType == typeof(double))
+                        fValue = ((decimal)value).ToString(System.Globalization.CultureInfo.InvariantCulture);
                     else
                         fValue = $"N'{value}'";
                     where.Add($"{columnAttr.Name} = {fValue}");
                 }
                 else
                 {
-                    if (pType == typeof(int) || pType == typeof(float) || pType == typeof(double))
+                    if (pType == typeof(int))
                         fValue = value;
                     else if (pType == typeof(DateTime))
                     {
@@ -405,6 +409,8 @@ namespace QLKS
                     }
                     else if (pType == typeof(bool))
                         fValue = (bool)value ? 1 : 0;
+                    else if (pType == typeof(decimal) || pType == typeof(float) || pType == typeof(double))
+                        fValue = ((decimal)value).ToString(System.Globalization.CultureInfo.InvariantCulture);
                     else
                         fValue = $"N'{value}'";
                     sets.Add($"{columnAttr.Name} = {fValue}");
