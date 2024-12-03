@@ -15,10 +15,10 @@ namespace QLKS.Forms
         DbContext db = new DbContext(DbContext.ConnectionType.ConfigurationManager, "DefaultConnection");
         void LoadDataSource()
         {
-            foreach(RoomType roomType in db.GetTable<RoomType>().ToList())
+            foreach (RoomType roomType in db.GetTable<RoomType>().ToList())
             {
-                dtgvRoomType.Rows.Add(roomType.Id,roomType.Name,string.Format("{0:C0}",roomType.Price),roomType.MaxPeople);
-            }    
+                dtgvRoomType.Rows.Add(roomType.Id, roomType.Name, string.Format("{0:C0}", roomType.Price), roomType.MaxPeople);
+            }
         }
         void LoadRoomId()
         {
@@ -39,19 +39,21 @@ namespace QLKS.Forms
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dtgvRoomType.Rows[e.RowIndex];
-                txtName.Text = row.Cells["RoomName"].Value?.ToString();
-                txtMaxPeople.Text = row.Cells["MaxPeople"].Value?.ToString(); ;
-                txtPrice.Text = row.Cells["Price"].Value?.ToString();
-                cboId.Text = row.Cells["Id"].Value?.ToString();
+                RoomType rT = db.GetTable<RoomType>(x => x.Id.ToString() == row.Cells["Id"].Value.ToString()).First();
+                txtName.Text = rT.Name;
+                txtMaxPeople.Text = rT.MaxPeople.ToString();
+                txtPrice.Text = ((int)rT.Price).ToString();
+                cboId.Text = rT.Id.ToString();
             }
         }
 
         private void cboId_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RoomType roomType = db.GetTable<RoomType>(t => t.Id == int.Parse(cboId.Text)).First();
-            txtName.Text = roomType.Name;
-            txtMaxPeople.Text = roomType.MaxPeople.ToString();
-            txtPrice.Text = string.Format("{0:C0}", roomType.Price);
+            RoomType rT = db.GetTable<RoomType>(t => t.Id == int.Parse(cboId.Text)).First();
+            txtName.Text = rT.Name;
+            txtMaxPeople.Text = rT.MaxPeople.ToString();
+            txtPrice.Text = ((int)rT.Price).ToString();
+            cboId.Text = rT.Id.ToString();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

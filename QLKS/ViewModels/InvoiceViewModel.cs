@@ -1,5 +1,4 @@
 ﻿using QLKS.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -17,13 +16,15 @@ namespace QLKS.ViewModels
 
         public int Id => invoice.Id;
 
-        public DateTime InvoiceDate => invoice.InvoiceDate;
+        public string InvoiceDate => invoice.InvoiceDate.ToString("dd/MM/yyyy HH:mm");
 
         public string TotalMoney => string.Format("{0:C0}", invoice.TotalPrice);
 
         public string EmployeeName => employee.Name;
 
         public string CustomerName => customer.Name;
+
+        public string CustomerPhone => customer.Phone;
 
 
         public InvoiceViewModel(Invoice invoice, DbContext db)
