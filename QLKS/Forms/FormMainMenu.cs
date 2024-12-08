@@ -27,6 +27,7 @@ namespace QLKS
             if (account.Role == "Tiếp tân")
             {
                 button1.Visible = false;
+                btnBackup.Visible = false;
             }
         }
         private Color SelectThemeColor()
@@ -184,6 +185,11 @@ namespace QLKS
         private void btn_Task7_Click(object sender, EventArgs e)
         {
             OpenChildForm(new FormInvoice(), sender);
+        }
+
+        private void btnBackup_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new BackUpAndRestore(account), sender);
         }
     }
 }
