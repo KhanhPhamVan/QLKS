@@ -149,7 +149,7 @@
             this.cboTypeSearch.Items.AddRange(new object[] {
             "Mã định danh",
             "Số điện thoại"});
-            this.cboTypeSearch.Location = new System.Drawing.Point(3, 4);
+            this.cboTypeSearch.Location = new System.Drawing.Point(3, 9);
             this.cboTypeSearch.Name = "cboTypeSearch";
             this.cboTypeSearch.Size = new System.Drawing.Size(203, 33);
             this.cboTypeSearch.TabIndex = 0;
@@ -234,7 +234,7 @@
             this.cboCountry.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cboCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCountry.FormattingEnabled = true;
-            this.cboCountry.Location = new System.Drawing.Point(222, 173);
+            this.cboCountry.Location = new System.Drawing.Point(222, 178);
             this.cboCountry.Name = "cboCountry";
             this.cboCountry.Size = new System.Drawing.Size(203, 33);
             this.cboCountry.TabIndex = 0;
@@ -265,7 +265,7 @@
             this.cboCustomerId.AccessibleName = "";
             this.cboCustomerId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cboCustomerId.FormattingEnabled = true;
-            this.cboCustomerId.Location = new System.Drawing.Point(3, 33);
+            this.cboCustomerId.Location = new System.Drawing.Point(3, 38);
             this.cboCustomerId.Name = "cboCustomerId";
             this.cboCustomerId.Size = new System.Drawing.Size(203, 33);
             this.cboCustomerId.Sorted = true;
@@ -362,7 +362,7 @@
             this.cboGender.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cboGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboGender.FormattingEnabled = true;
-            this.cboGender.Location = new System.Drawing.Point(3, 243);
+            this.cboGender.Location = new System.Drawing.Point(3, 248);
             this.cboGender.Name = "cboGender";
             this.cboGender.Size = new System.Drawing.Size(203, 33);
             this.cboGender.TabIndex = 0;
